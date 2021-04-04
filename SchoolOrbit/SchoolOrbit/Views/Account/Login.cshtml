@@ -1,0 +1,85 @@
+﻿@using SchoolOrbit.Models
+@model LoginViewModel
+@{
+    
+    Layout = "~/Views/Shared/_Login.cshtml";
+    }
+
+
+<section class="login-page">
+    <div class="container">
+        <div class="row">
+            @*<section class="col-lg-7 img-responsive" >
+
+                    <img src="~/img/loginPage.jpg" class="img-responsive" style="width:800px;height:660px" alt="imageTag" />
+                </section>*@
+            <section class="col-lg-12 connectedSortable">
+                <div class="login-box">
+                    <div class="login-logo">
+
+                    </div>
+                    <div class="login-box-body">
+                        <div class="alert alert-danger alert-dismissable  @(Html.ViewData.ModelState.IsValid ? "validation-summary-valid" : "validation-summary-errors")" id="alertbox">
+                           
+                            <h4><i class="icon fa fa-ban"></i> Alert!</h4>
+                            @Html.ValidationSummary(true, "", new { @class = "danger" })
+                        </div>
+                        <p class="login-box-msg">Sign in</p>
+
+                        @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "", role = "form" }))
+                        {
+                            @Html.AntiForgeryToken()
+
+                            <div>
+
+                                <div class="form-group has-feedback">
+                                    @Html.LabelFor(m => m.Email, "Username / Email", new { @class = "control-label" })
+
+                                    @Html.TextBoxFor(m => m.Email, new { placeholder = "Enter Email or Username", @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                                    <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                                </div>
+                                <div class="form-group has-feedback">
+                                    @Html.LabelFor(m => m.Password, new { @class = "control-label" })
+
+                                    @Html.PasswordFor(m => m.Password, new { placeholder = "Enter Password", @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                                    <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+
+                                </div>
+                                <div class="form-group">
+
+                                    <input type="checkbox" name="remember_me" /> Remember me
+
+                                </div>
+                            </div>
+                            <div class="footer">
+
+
+                                <button type="submit" class="btn bg-olive">
+                                    <span class="glyphicon glyphicon-log-in"></span> Login
+                                </button>
+
+                                <a class="btn btn-warning" href="/Account/ForgotPassword"><i class="fa fa-key fa-fw"></i> Forgot Password</a>
+
+                                @*<p>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</p>*@
+
+                            </div>
+                        }
+
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+    
+
+</section>
+
+
+
+
+
+
+

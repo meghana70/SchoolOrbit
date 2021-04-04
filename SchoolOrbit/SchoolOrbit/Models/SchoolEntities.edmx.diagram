@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2a478b08ffb04d55a2c8b5a81e085298" Name="Diagram1" ZoomLevel="75">
+        <EntityTypeShape EntityType="SchoolOrbitModel.AspNetRole" Width="1.5" PointX="8.75" PointY="2.5" />
+        <EntityTypeShape EntityType="SchoolOrbitModel.AspNetUserClaim" Width="1.5" PointX="13.25" PointY="1" />
+        <EntityTypeShape EntityType="SchoolOrbitModel.AspNetUserLogin" Width="1.5" PointX="13.25" PointY="3.75" />
+        <EntityTypeShape EntityType="SchoolOrbitModel.AspNetUser" Width="1.5" PointX="11" PointY="1.125" />
+        <EntityTypeShape EntityType="SchoolOrbitModel.sch_department" Width="1.5" PointX="5.25" PointY="16.75" />
+        <EntityTypeShape EntityType="SchoolOrbitModel.sch_employee_docs" Width="1.5" PointX="5.25" PointY="19.5" />
+        <EntityTypeShape EntityType="SchoolOrbitModel.sch_fee_term" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="SchoolOrbitModel.sch_fee_type" Width="1.5" PointX="5.25" PointY="22.25" />
+        <EntityTypeShape EntityType="SchoolOrbitModel.sch_parent" Width="1.5" PointX="6" PointY="2.375" />
+        <EntityTypeShape EntityType="SchoolOrbitModel.sch_program_batch" Width="1.5" PointX="5.25" PointY="6.75" />
+        <EntityTypeShape EntityType="SchoolOrbitModel.sch_student" Width="1.5" PointX="8.25" PointY="10.5" />
+        <EntityTypeShape EntityType="SchoolOrbitModel.sch_teacher" Width="1.5" PointX="5.25" PointY="11" />
+        <EntityTypeShape EntityType="SchoolOrbitModel.sys_business" Width="1.5" PointX="0.75" PointY="11.125" />
+        <EntityTypeShape EntityType="SchoolOrbitModel.sys_country" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="SchoolOrbitModel.sys_program_model" Width="1.5" PointX="0.75" PointY="7.5" />
+        <EntityTypeShape EntityType="SchoolOrbitModel.sys_program_type" Width="1.5" PointX="0.75" PointY="5" />
+        <EntityTypeShape EntityType="SchoolOrbitModel.sys_school" Width="1.5" PointX="3" PointY="10.25" />
+        <EntityTypeShape EntityType="SchoolOrbitModel.sys_states" Width="1.5" PointX="7.75" PointY="6.75" />
+        <EntityTypeShape EntityType="SchoolOrbitModel.sys_user" Width="1.5" PointX="10.75" PointY="6.75" />
+        <AssociationConnector Association="SchoolOrbitModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="SchoolOrbitModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="SchoolOrbitModel.FK_sch_department_sys_school" />
+        <AssociationConnector Association="SchoolOrbitModel.FK_sch_employee_docs_sys_school" />
+        <AssociationConnector Association="SchoolOrbitModel.FK_sch_fee_type_sys_school" />
+        <AssociationConnector Association="SchoolOrbitModel.FK_sch_student_sch_parent" />
+        <AssociationConnector Association="SchoolOrbitModel.FK_sch_program_batch_sys_school" />
+        <AssociationConnector Association="SchoolOrbitModel.FK_sch_student_sys_school" />
+        <AssociationConnector Association="SchoolOrbitModel.FK_sch_teacher_sys_school" />
+        <AssociationConnector Association="SchoolOrbitModel.FK_sys_school_sys_business" />
+        <AssociationConnector Association="SchoolOrbitModel.AspNetUserRoles" />
+        <EntityTypeShape EntityType="SchoolOrbitModel.sch_expense_type" Width="1.5" PointX="5.25" PointY="25" />
+        <AssociationConnector Association="SchoolOrbitModel.FK_sch_expense_type_sys_school" />
+        <EntityTypeShape EntityType="SchoolOrbitModel.sch_expense_attachment" Width="1.5" PointX="10.375" PointY="12.75" />
+        <EntityTypeShape EntityType="SchoolOrbitModel.sch_expense_trans" Width="1.5" PointX="10.5" PointY="16.75" />
+        <AssociationConnector Association="SchoolOrbitModel.FK_sch_expense_trans_sch_expense_type" />
+        <AssociationConnector Association="SchoolOrbitModel.FK_sch_expense_trans_sys_school" />
+        <EntityTypeShape EntityType="SchoolOrbitModel.sch_employee" Width="1.5" PointX="7.5" PointY="14.625" />
+        <AssociationConnector Association="SchoolOrbitModel.FK_sch_employee_sch_department" />
+        <AssociationConnector Association="SchoolOrbitModel.FK_sch_employee_sys_school" />
+        <EntityTypeShape EntityType="SchoolOrbitModel.sch_fee_discount" Width="1.5" PointX="11.25" PointY="25.75" />
+        <EntityTypeShape EntityType="SchoolOrbitModel.sch_fee_payment_plan" Width="1.5" PointX="11.25" PointY="23" />
+        <EntityTypeShape EntityType="SchoolOrbitModel.sch_program_batch_fee" Width="1.5" PointX="13.5" PointY="14.25" />
+        <EntityTypeShape EntityType="SchoolOrbitModel.sch_program_batch_student" Width="1.5" PointX="13.5" PointY="7" />
+        <EntityTypeShape EntityType="SchoolOrbitModel.sch_program_section" Width="1.5" PointX="13.25" PointY="10.5" />
+        <EntityTypeShape EntityType="SchoolOrbitModel.sys_academic_year" Width="1.5" PointX="11.25" PointY="28.75" />
+        <EntityTypeShape EntityType="SchoolOrbitModel.sys_program" Width="1.5" PointX="3" PointY="5.625" />
+        <EntityTypeShape EntityType="SchoolOrbitModel.sch_fee_schedule" Width="1.5" PointX="15.375" PointY="0.75" />
+        <AssociationConnector Association="SchoolOrbitModel.FK_sch_program_batch_student_sch_fee_discount" />
+        <AssociationConnector Association="SchoolOrbitModel.FK_sch_program_batch_student_sch_fee_term" />
+        <AssociationConnector Association="SchoolOrbitModel.FK_sch_program_batch_fee_sch_fee_type" />
+        <AssociationConnector Association="SchoolOrbitModel.FK_sch_program_batch_fee_sch_program_batch" />
+        <AssociationConnector Association="SchoolOrbitModel.FK_sch_program_batch_student_sch_program_batch" />
+        <AssociationConnector Association="SchoolOrbitModel.FK_sch_program_batch_sys_program" />
+        <AssociationConnector Association="SchoolOrbitModel.FK_sch_program_batch_fee_sys_academic_year" />
+        <AssociationConnector Association="SchoolOrbitModel.FK_sch_program_batch_student_sch_program_section" />
+        <AssociationConnector Association="SchoolOrbitModel.FK_sch_program_section_sys_program" />
+        <AssociationConnector Association="SchoolOrbitModel.FK_sch_program_section_sys_school" />
+        <AssociationConnector Association="SchoolOrbitModel.FK_sys_program_sys_program_model" />
+        <AssociationConnector Association="SchoolOrbitModel.FK_sys_program_sys_program_type" />
+        <AssociationConnector Association="SchoolOrbitModel.FK_sys_program_sys_program_type1" />
+        <EntityTypeShape EntityType="SchoolOrbitModel.sys_roles" Width="1.5" PointX="15.75" PointY="2.75" />
+        <EntityTypeShape EntityType="SchoolOrbitModel.sch_user_roles" Width="1.5" PointX="0.75" PointY="15.75" />
+        <EntityTypeShape EntityType="SchoolOrbitModel.vew_user_roles" Width="1.5" PointX="15.375" PointY="10.75" />
+        <AssociationConnector Association="SchoolOrbitModel.FK_sch_parent_sys_user" />
+        <AssociationConnector Association="SchoolOrbitModel.FK_sch_student_sys_user" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

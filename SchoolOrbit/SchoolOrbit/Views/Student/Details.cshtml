@@ -1,0 +1,194 @@
+﻿@model DomainModel.BusinessLayer.Student
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="content-header">
+    <h1>
+        Student
+        <small>Details</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-user"></i> Student</a></li>
+        <li class="active">Details</li>
+    </ol>
+</section>
+
+<section class="content">
+    <div class="box">
+        <div class="box-header with-border">
+            <h3 class="box-title">Student Details [
+            @Html.ActionLink("Edit", "Edit", new { id = Model.Id })
+            ]</h3>
+
+            <div class="box-body">
+                <div class="row">
+                    <div class="col-md-8">
+                        <h4>Personal Info</h4>
+                        <table class=" table table-bordered ">
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.first_name)
+                                </td>
+                                <td class="text-bold">
+                                    @Html.DisplayFor(model => model.first_name)
+                                </td>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.middle_name)
+                                </td>
+                                <td class="text-bold">
+                                    @Html.DisplayFor(model => model.middle_name)
+                                </td>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.last_name)
+                                </td>
+                                <td class="text-bold">
+                                    @Html.DisplayFor(model => model.last_name)
+                                </td>
+                            </tr>
+                            <tr>
+
+                                <td>
+                                    @Html.DisplayNameFor(model => model.gender)
+                                </td>
+                                <td class="text-bold">
+                                    @Html.DisplayFor(model => model.gender)
+                                </td>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.DOB)
+                                </td>
+                                <td class="text-bold">
+                                    @Html.DisplayFor(model => model.DOB)
+                                </td>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.screen_name)
+                                </td>
+                                <td class="text-bold">
+                                    @Html.DisplayFor(model => model.screen_name)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>@Html.DisplayNameFor(model => model.admission_number)</td>
+                                <td class="text-bold">@Html.DisplayFor(model => model.admission_number)</td>
+                                <td>@Html.DisplayNameFor(model => model.admission_date)</td>
+                                <td class="text-bold">@Html.DisplayFor(model => model.admission_date)</td>
+                            </tr>
+
+                        </table>
+                        <h4>Parent Info</h4>
+                        <table class=" table table-bordered ">
+                            <tr>
+                                <td>@Html.DisplayNameFor(model => model.father_guardian_phone_no)</td>
+                                <td class="text-bold">@Html.DisplayFor(model => model.father_guardian_phone_no)</td>
+                                <td>@Html.DisplayNameFor(model => model.father_guardian_first_name)</td>
+                                <td class="text-bold">@Html.DisplayFor(model => model.father_guardian_first_name)</td>
+                                <td>@Html.DisplayNameFor(model => model.father_guardian_last_name)</td>
+                                <td class="text-bold">@Html.DisplayFor(model => model.father_guardian_last_name)</td>
+                            </tr>
+                            <tr>
+                                
+                                <td>@Html.DisplayNameFor(model => model.father_guardian_email)</td>
+                                <td class="text-bold">@Html.DisplayFor(model => model.father_guardian_email)</td>
+                                <td>@Html.DisplayNameFor(model => model.father_guardian_occupation)</td>
+                                <td class="text-bold">@Html.DisplayFor(model => model.father_guardian_occupation)</td>
+                                <td>@Html.DisplayNameFor(model => model.mother_name)</td>
+                                <td class="text-bold">@Html.DisplayFor(model => model.mother_name)</td>
+                            </tr>
+                            <tr>
+                                <td>@Html.DisplayNameFor(model => model.mother_phone_no)</td>
+                                <td class="text-bold">@Html.DisplayFor(model => model.mother_phone_no)</td>
+                                <td>@Html.DisplayNameFor(model => model.mother_email)</td>
+                                <td class="text-bold">@Html.DisplayFor(model => model.mother_email)</td>                                
+                                <td>@Html.DisplayNameFor(model => model.mother_occupation)</td>
+                                <td class="text-bold">@Html.DisplayFor(model => model.mother_occupation)</td>
+                              </tr>
+                            </table>
+                            <h4>Present Address</h4>
+                            <table class="table table-bordered">
+                                <tr>
+                                    <td>@Html.DisplayNameFor(model => model.present_address)</td>
+                                    <td class="text-bold">@Html.DisplayFor(model => model.present_address)</td>
+                                    <td>@Html.DisplayNameFor(model => model.present_city)</td>
+                                    <td class="text-bold">@Html.DisplayFor(model => model.present_city)</td>
+
+                                    <td>@Html.DisplayNameFor(model => model.present_state)</td>
+                                    <td>@Html.DisplayFor(model => model.present_state)</td>
+
+                                </tr>
+                                <tr>
+                                    <td>@Html.DisplayNameFor(model => model.present_country)</td>
+                                    <td class="text-bold">@Html.DisplayFor(model => model.present_country)</td>
+                                    <td>@Html.DisplayNameFor(model => model.present_zip_code)</td>
+                                    <td class="text-bold">@Html.DisplayFor(model => model.present_zip_code)</td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                            <h4>Permanent Address</h4>
+                            <table class="table table-bordered">
+                                <tr>
+                                    <td>@Html.DisplayNameFor(model => model.permanent_address)</td>
+                                    <td class="text-bold">@Html.DisplayFor(model => model.permanent_address)</td>
+                                    <td>@Html.DisplayNameFor(model => model.permanent_city)</td>
+                                    <td class="text-bold">@Html.DisplayFor(model => model.permanent_city)</td>
+                                    <td>@Html.DisplayNameFor(model => model.permanent_state)</td>
+                                    <td class="text-bold">@Html.DisplayFor(model => model.permanent_state)</td>
+                                </tr>
+                                <tr>
+
+                                    <td>@Html.DisplayNameFor(model => model.permanent_country)</td>
+                                    <td class="text-bold">@Html.DisplayFor(model => model.permanent_country)</td>
+                                    <td>@Html.DisplayNameFor(model => model.permanent_zip_code)</td>
+                                    <td class="text-bold">@Html.DisplayFor(model => model.permanent_zip_code)</td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </table>
+
+
+
+                                    <h4>Miscellaneous Details</h4>
+                                    <table class="table table-bordered">
+                                        <tr>
+                                            <td>@Html.DisplayNameFor(model => model.paediatrician_details)</td>
+                                            <td class="text-bold">@Html.DisplayFor(model => model.paediatrician_details)</td>
+                                            <td>@Html.DisplayNameFor(model => model.allergic)</td>
+                                            <td class="text-bold">@Html.DisplayFor(model => model.allergic)</td>
+                                            <td>@Html.DisplayNameFor(model => model.blood_group)</td>
+                                            <td class="text-bold">@Html.DisplayFor(model => model.blood_group)</td>
+
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="form-group">
+                                                    <div class="col-md-offset-2 col-md-10">                                                      
+                                                        <a href="../Index" class="btn btn-info">Back to List</a>
+                                                    </div>
+                                                </div>
+
+                                            </td>
+                                        </tr>
+                                    </table>
+
+
+
+
+
+
+                    </div>
+                    <div class="col-md-4">
+                        <center> <img src="@Html.DisplayFor(model => model.photo_url)" class="img-circle" alt="User Image" /></center>
+                        <div class="clearfix"></div>
+                        <center style="margin-top:20px"><a href="#">@Html.DisplayFor(model => model.screen_name)</a></center>
+                    </div>
+                    <div class="col-md-4">
+                        @Html.ActionLink("Change Password", "ViewChangePassword", "Account", new { idUser = Model.Id }, new { @class = "modal-link btn btn-success" }))
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+                   

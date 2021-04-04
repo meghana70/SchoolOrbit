@@ -1,0 +1,76 @@
+﻿@model IEnumerable<SchoolOrbit.Models.ExpenseType>
+
+@{
+    ViewBag.Title = "ExpenseList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="content-header">
+    <h1>
+        Expense Category List
+        <small></small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-user"></i> Expense</a></li>
+        <li class="active">List</li>
+    </ol>
+</section>
+
+<section class="content">
+    <div class="box">
+        <div class="box-header with-border">
+            <h3 class="box-title">
+                Expense Category [
+                @Html.ActionLink("Create New", "NewExpenseCategory")
+                ]
+            </h3>
+            <div class="box-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <table class ="table table-bordered table-striped" id="tblexpense">
+                            <thead>
+                                <tr>
+
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.expense_type)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.isactive)
+                                    </th>
+
+                                    <th class="nosort"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+
+                                    <tr>
+
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.expense_type)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.isactive)
+                                        </td>
+                                        <td>
+                                            @Html.ActionLink("Edit", "EditExpType", new { id = item.id }) |
+                                            @Html.ActionLink("Details", "ExpTypeDetails", new { id = item.id }) |
+                                            @*@Html.ActionLink("Delete", "Delete", new { id = item.id })*@
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                            </table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#tblexpense").DataTable();
+    });
+
+</script>

@@ -1,0 +1,2584 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SchoolOrbitModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ClaimType" Type="nvarchar(max)" />
+          <Property Name="ClaimValue" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="IdUser" Type="int" StoreGeneratedPattern="Identity" />
+          <Property Name="Displayname" Type="nvarchar(max)" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sch_department">
+          <Key>
+            <PropertyRef Name="idDepartment" />
+          </Key>
+          <Property Name="idDepartment" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idSchool" Type="int" Nullable="false" />
+          <Property Name="department_name" Type="varchar" MaxLength="70" />
+        </EntityType>
+        <EntityType Name="sch_employee">
+          <Key>
+            <PropertyRef Name="idSchool" />
+            <PropertyRef Name="idUser" />
+          </Key>
+          <Property Name="idSchool" Type="int" Nullable="false" />
+          <Property Name="idUser" Type="int" Nullable="false" />
+          <Property Name="employee_number" Type="int" Nullable="false" />
+          <Property Name="idDepartment" Type="int" />
+          <Property Name="designation" Type="varchar" MaxLength="60" />
+          <Property Name="WorkStartDate" Type="date" />
+          <Property Name="WorkEndDate" Type="date" />
+          <Property Name="Qualification" Type="varchar" MaxLength="100" />
+          <Property Name="PassingYear" Type="date" />
+          <Property Name="University" Type="varchar" MaxLength="100" />
+          <Property Name="BankAccountNo" Type="varchar" MaxLength="25" />
+          <Property Name="BankName" Type="varchar" MaxLength="50" />
+          <Property Name="IFSCCode" Type="varchar" MaxLength="10" />
+          <Property Name="ESIPFNumber" Type="varchar" MaxLength="50" />
+          <Property Name="PanNumber" Type="varchar" MaxLength="10" />
+          <Property Name="AdharNumber" Type="varchar" MaxLength="20" />
+          <Property Name="ManagerID" Type="int" />
+          <Property Name="is_active" Type="bit" />
+          <Property Name="mobilenumber" Type="varchar" MaxLength="15" />
+          <Property Name="AlternateNumber" Type="varchar" MaxLength="15" />
+          <Property Name="cv_path" Type="varchar" MaxLength="15" />
+          <Property Name="addressproof_path" Type="varchar" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="sch_employee_docs">
+          <Key>
+            <PropertyRef Name="idSchool" />
+            <PropertyRef Name="idUser" />
+          </Key>
+          <Property Name="idSchool" Type="int" Nullable="false" />
+          <Property Name="idUser" Type="int" Nullable="false" />
+          <Property Name="employee_number" Type="int" Nullable="false" />
+          <Property Name="doc_name" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="sch_expense_attachment">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idexpense_trans" Type="int" Nullable="false" />
+          <Property Name="isactive" Type="bit" Nullable="false" />
+          <Property Name="ts_entered" Type="datetime" Nullable="false" />
+          <Property Name="ts_updated" Type="datetime" Nullable="false" />
+          <Property Name="last_updated_by" Type="int" Nullable="false" />
+          <Property Name="entered_by" Type="int" Nullable="false" />
+          <Property Name="vocher" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="sch_expense_trans">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idSchool" Type="int" Nullable="false" />
+          <Property Name="expense_type_id" Type="int" Nullable="false" />
+          <Property Name="expense_date" Type="date" />
+          <Property Name="amount" Type="money" />
+          <Property Name="remarks" Type="varchar(max)" />
+          <Property Name="approved_by" Type="int" />
+          <Property Name="approved_dt" Type="datetime" />
+          <Property Name="approved_remarks" Type="varchar" MaxLength="1000" />
+          <Property Name="ts_entered" Type="datetime" Nullable="false" />
+          <Property Name="ts_updated" Type="datetime" Nullable="false" />
+          <Property Name="last_updated_by" Type="int" Nullable="false" />
+          <Property Name="entered_by" Type="int" Nullable="false" />
+          <Property Name="idExpensestatus" Type="int" Nullable="false" />
+          <Property Name="mode_of_payment" Type="varchar" MaxLength="20" />
+          <Property Name="cheque_dd_no" Type="int" />
+          <Property Name="issue_bank" Type="varchar" MaxLength="100" />
+          <Property Name="isdeleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sch_expense_type">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idSchool" Type="int" Nullable="false" />
+          <Property Name="expense_type" Type="varchar" MaxLength="100" />
+          <Property Name="isactive" Type="bit" Nullable="false" />
+          <Property Name="ts_entered" Type="datetime" Nullable="false" />
+          <Property Name="ts_updated" Type="datetime" Nullable="false" />
+          <Property Name="last_updated_by" Type="int" Nullable="false" />
+          <Property Name="entered_by" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sch_fee_discount">
+          <Key>
+            <PropertyRef Name="idDiscount" />
+          </Key>
+          <Property Name="idSchool" Type="int" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="idDiscount" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sch_fee_payment_plan">
+          <Key>
+            <PropertyRef Name="idFeePaymentPlan" />
+          </Key>
+          <Property Name="idFeePaymentPlan" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idSchool" Type="int" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="installments" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'SchoolOrbit_Test.dbo.sch_fee_schedule' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="sch_fee_schedule">
+          <Key>
+            <PropertyRef Name="idSchool" />
+          </Key>
+          <Property Name="idSchool" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sch_fee_term">
+          <Key>
+            <PropertyRef Name="idFeeTerm" />
+          </Key>
+          <Property Name="idFeeTerm" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idSchool" Type="int" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" />
+          <Property Name="date_start" Type="datetime" />
+          <Property Name="date_end" Type="datetime" />
+        </EntityType>
+        <EntityType Name="sch_fee_type">
+          <Key>
+            <PropertyRef Name="idFeeType" />
+          </Key>
+          <Property Name="idFeeType" Type="int" Nullable="false" />
+          <Property Name="idSchool" Type="int" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sch_parent">
+          <Key>
+            <PropertyRef Name="idUser" />
+          </Key>
+          <Property Name="idUser" Type="int" Nullable="false" />
+          <Property Name="father_guardian_name" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="father_guardian_phone_no" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="father_guardian_email" Type="varchar" MaxLength="150" />
+          <Property Name="father_guardian_occupation" Type="varchar" MaxLength="150" />
+          <Property Name="mother_name" Type="varchar" MaxLength="150" />
+          <Property Name="mother_phone_no" Type="varchar" MaxLength="15" />
+          <Property Name="mother_email" Type="varchar" MaxLength="150" />
+          <Property Name="mother_occupation" Type="varchar" MaxLength="150" />
+          <Property Name="ts_entered" Type="datetime" Nullable="false" />
+          <Property Name="ts_updated" Type="datetime" />
+        </EntityType>
+        <EntityType Name="sch_program_batch">
+          <Key>
+            <PropertyRef Name="idBatch" />
+          </Key>
+          <Property Name="idBatch" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idSchool" Type="int" Nullable="false" />
+          <Property Name="idProgram" Type="int" Nullable="false" />
+          <Property Name="date_start" Type="datetime" Nullable="false" />
+          <Property Name="date_end" Type="datetime" Nullable="false" />
+          <Property Name="is_active" Type="bit" Nullable="false" />
+          <Property Name="year" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sch_program_batch_fee">
+          <Key>
+            <PropertyRef Name="idBatch" />
+            <PropertyRef Name="idFeeType" />
+            <PropertyRef Name="idAcademicYear" />
+          </Key>
+          <Property Name="idBatch" Type="int" Nullable="false" />
+          <Property Name="idFeeType" Type="int" Nullable="false" />
+          <Property Name="fee" Type="money" />
+          <Property Name="idAcademicYear" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sch_program_batch_student">
+          <Key>
+            <PropertyRef Name="idBatch" />
+            <PropertyRef Name="idUser" />
+          </Key>
+          <Property Name="idBatch" Type="int" Nullable="false" />
+          <Property Name="idUser" Type="int" Nullable="false" />
+          <Property Name="idSection" Type="int" Nullable="false" />
+          <Property Name="idFeePaymentPlan" Type="int" />
+          <Property Name="idDiscount" Type="int" />
+        </EntityType>
+        <EntityType Name="sch_program_section">
+          <Key>
+            <PropertyRef Name="idSection" />
+          </Key>
+          <Property Name="idSection" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idSchool" Type="int" Nullable="false" />
+          <Property Name="idProgram" Type="int" Nullable="false" />
+          <Property Name="section" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="idBuilding" Type="int" />
+          <Property Name="room" Type="varchar" MaxLength="50" />
+          <Property Name="capacity" Type="int" />
+        </EntityType>
+        <EntityType Name="sch_student">
+          <Key>
+            <PropertyRef Name="idSchool" />
+            <PropertyRef Name="idUser" />
+          </Key>
+          <Property Name="idSchool" Type="int" Nullable="false" />
+          <Property Name="idUser" Type="int" Nullable="false" />
+          <Property Name="admission_number" Type="int" Nullable="false" />
+          <Property Name="admission_date" Type="datetime" />
+          <Property Name="transfer_date" Type="datetime" />
+          <Property Name="is_active" Type="bit" Nullable="false" />
+          <Property Name="ts_entered" Type="datetime" Nullable="false" />
+          <Property Name="ts_updated" Type="datetime" />
+          <Property Name="idParent" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sch_teacher">
+          <Key>
+            <PropertyRef Name="idSchool" />
+            <PropertyRef Name="idUser" />
+          </Key>
+          <Property Name="idSchool" Type="int" Nullable="false" />
+          <Property Name="idUser" Type="int" Nullable="false" />
+          <Property Name="idSubject" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sch_user_roles">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idSchool" Type="int" Nullable="false" />
+          <Property Name="idUser" Type="int" Nullable="false" />
+          <Property Name="idRole" Type="int" Nullable="false" />
+          <Property Name="isactive" Type="bit" Nullable="false" />
+          <Property Name="entered_by" Type="int" Nullable="false" />
+          <Property Name="ts_entered" Type="datetime" Nullable="false" />
+          <Property Name="last_updated_by" Type="int" Nullable="false" />
+          <Property Name="ts_updated" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sys_academic_year">
+          <Key>
+            <PropertyRef Name="idAcademicYear" />
+          </Key>
+          <Property Name="idAcademicYear" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sys_business">
+          <Key>
+            <PropertyRef Name="idBusiness" />
+          </Key>
+          <Property Name="idBusiness" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ts_entered" Type="datetime" Nullable="false" />
+          <Property Name="ts_updated" Type="datetime" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="sys_country">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="country_name" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="sys_program">
+          <Key>
+            <PropertyRef Name="idProgram" />
+          </Key>
+          <Property Name="idProgram" Type="int" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="duration" Type="int" />
+          <Property Name="idProgramType" Type="int" Nullable="false" />
+          <Property Name="idProgramModel" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sys_program_model">
+          <Key>
+            <PropertyRef Name="idProgramModel" />
+          </Key>
+          <Property Name="idProgramModel" Type="int" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="sys_program_type">
+          <Key>
+            <PropertyRef Name="idProgramType" />
+          </Key>
+          <Property Name="idProgramType" Type="int" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="sys_roles">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="role_name" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="sys_school">
+          <Key>
+            <PropertyRef Name="idSchool" />
+          </Key>
+          <Property Name="idSchool" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ts_entered" Type="datetime" Nullable="false" />
+          <Property Name="ts_updated" Type="datetime" />
+          <Property Name="idBusiness" Type="int" Nullable="false" />
+          <Property Name="school_name" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="sys_states">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="country_id" Type="int" Nullable="false" />
+          <Property Name="state_name" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="sys_user">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="first_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="middle_name" Type="varchar" MaxLength="50" />
+          <Property Name="last_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="gender" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="DOB" Type="datetime" Nullable="false" />
+          <Property Name="screen_name" Type="varchar" MaxLength="100" />
+          <Property Name="photo_url" Type="varchar" MaxLength="200" />
+          <Property Name="permanent_address" Type="varchar" MaxLength="200" />
+          <Property Name="permanent_city" Type="varchar" MaxLength="30" />
+          <Property Name="permanent_state" Type="varchar" MaxLength="30" />
+          <Property Name="permanent_country" Type="varchar" MaxLength="30" />
+          <Property Name="permanent_zip_code" Type="int" />
+          <Property Name="present_address" Type="varchar" MaxLength="200" />
+          <Property Name="present_city" Type="varchar" MaxLength="30" />
+          <Property Name="present_state" Type="varchar" MaxLength="30" />
+          <Property Name="present_country" Type="varchar" MaxLength="30" />
+          <Property Name="present_zip_code" Type="int" />
+          <Property Name="paediatrician_details" Type="varchar(max)" />
+          <Property Name="allergic" Type="varchar" MaxLength="50" />
+          <Property Name="blood_group" Type="varchar" MaxLength="20" />
+          <Property Name="active" Type="bit" Nullable="false" />
+          <Property Name="username" Type="varchar" MaxLength="50" />
+          <Property Name="aadhaar_number" Type="varchar" MaxLength="20" />
+          <Property Name="contact_number" Type="varchar" MaxLength="20" />
+          <Property Name="contact_number_alternate" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'SchoolOrbit_Test.dbo.vew_user_roles' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vew_user_roles">
+          <Key>
+            <PropertyRef Name="iduser" />
+            <PropertyRef Name="idschool" />
+            <PropertyRef Name="idrole" />
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="iduser" Type="int" Nullable="false" />
+          <Property Name="idschool" Type="int" Nullable="false" />
+          <Property Name="displayname" Type="nvarchar(max)" />
+          <Property Name="idrole" Type="int" Nullable="false" />
+          <Property Name="role_name" Type="varchar" MaxLength="100" />
+          <Property Name="id" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_sch_department_sys_school">
+          <End Role="sys_school" Type="Self.sys_school" Multiplicity="1" />
+          <End Role="sch_department" Type="Self.sch_department" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sys_school">
+              <PropertyRef Name="idSchool" />
+            </Principal>
+            <Dependent Role="sch_department">
+              <PropertyRef Name="idSchool" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_sch_employee_docs_sys_school">
+          <End Role="sys_school" Type="Self.sys_school" Multiplicity="1" />
+          <End Role="sch_employee_docs" Type="Self.sch_employee_docs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sys_school">
+              <PropertyRef Name="idSchool" />
+            </Principal>
+            <Dependent Role="sch_employee_docs">
+              <PropertyRef Name="idSchool" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_sch_employee_sch_department">
+          <End Role="sch_department" Type="Self.sch_department" Multiplicity="0..1" />
+          <End Role="sch_employee" Type="Self.sch_employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sch_department">
+              <PropertyRef Name="idDepartment" />
+            </Principal>
+            <Dependent Role="sch_employee">
+              <PropertyRef Name="idDepartment" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_sch_employee_sys_school">
+          <End Role="sys_school" Type="Self.sys_school" Multiplicity="1" />
+          <End Role="sch_employee" Type="Self.sch_employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sys_school">
+              <PropertyRef Name="idSchool" />
+            </Principal>
+            <Dependent Role="sch_employee">
+              <PropertyRef Name="idSchool" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_sch_expense_trans_sch_expense_type">
+          <End Role="sch_expense_type" Type="Self.sch_expense_type" Multiplicity="1" />
+          <End Role="sch_expense_trans" Type="Self.sch_expense_trans" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sch_expense_type">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="sch_expense_trans">
+              <PropertyRef Name="expense_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_sch_expense_trans_sys_school">
+          <End Role="sys_school" Type="Self.sys_school" Multiplicity="1" />
+          <End Role="sch_expense_trans" Type="Self.sch_expense_trans" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sys_school">
+              <PropertyRef Name="idSchool" />
+            </Principal>
+            <Dependent Role="sch_expense_trans">
+              <PropertyRef Name="idSchool" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_sch_expense_type_sys_school">
+          <End Role="sys_school" Type="Self.sys_school" Multiplicity="1" />
+          <End Role="sch_expense_type" Type="Self.sch_expense_type" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sys_school">
+              <PropertyRef Name="idSchool" />
+            </Principal>
+            <Dependent Role="sch_expense_type">
+              <PropertyRef Name="idSchool" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_sch_fee_type_sys_school">
+          <End Role="sys_school" Type="Self.sys_school" Multiplicity="1" />
+          <End Role="sch_fee_type" Type="Self.sch_fee_type" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sys_school">
+              <PropertyRef Name="idSchool" />
+            </Principal>
+            <Dependent Role="sch_fee_type">
+              <PropertyRef Name="idSchool" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_sch_parent_sys_user">
+          <End Role="sys_user" Type="Self.sys_user" Multiplicity="1" />
+          <End Role="sch_parent" Type="Self.sch_parent" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="sys_user">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="sch_parent">
+              <PropertyRef Name="idUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_sch_program_batch_fee_sch_fee_type">
+          <End Role="sch_fee_type" Type="Self.sch_fee_type" Multiplicity="1" />
+          <End Role="sch_program_batch_fee" Type="Self.sch_program_batch_fee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sch_fee_type">
+              <PropertyRef Name="idFeeType" />
+            </Principal>
+            <Dependent Role="sch_program_batch_fee">
+              <PropertyRef Name="idFeeType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_sch_program_batch_fee_sch_program_batch">
+          <End Role="sch_program_batch" Type="Self.sch_program_batch" Multiplicity="1" />
+          <End Role="sch_program_batch_fee" Type="Self.sch_program_batch_fee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sch_program_batch">
+              <PropertyRef Name="idBatch" />
+            </Principal>
+            <Dependent Role="sch_program_batch_fee">
+              <PropertyRef Name="idBatch" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_sch_program_batch_fee_sys_academic_year">
+          <End Role="sys_academic_year" Type="Self.sys_academic_year" Multiplicity="1" />
+          <End Role="sch_program_batch_fee" Type="Self.sch_program_batch_fee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sys_academic_year">
+              <PropertyRef Name="idAcademicYear" />
+            </Principal>
+            <Dependent Role="sch_program_batch_fee">
+              <PropertyRef Name="idAcademicYear" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_sch_program_batch_student_sch_fee_discount">
+          <End Role="sch_fee_discount" Type="Self.sch_fee_discount" Multiplicity="0..1" />
+          <End Role="sch_program_batch_student" Type="Self.sch_program_batch_student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sch_fee_discount">
+              <PropertyRef Name="idDiscount" />
+            </Principal>
+            <Dependent Role="sch_program_batch_student">
+              <PropertyRef Name="idDiscount" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_sch_program_batch_student_sch_fee_term">
+          <End Role="sch_fee_payment_plan" Type="Self.sch_fee_payment_plan" Multiplicity="0..1" />
+          <End Role="sch_program_batch_student" Type="Self.sch_program_batch_student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sch_fee_payment_plan">
+              <PropertyRef Name="idFeePaymentPlan" />
+            </Principal>
+            <Dependent Role="sch_program_batch_student">
+              <PropertyRef Name="idFeePaymentPlan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_sch_program_batch_student_sch_program_batch">
+          <End Role="sch_program_batch" Type="Self.sch_program_batch" Multiplicity="1" />
+          <End Role="sch_program_batch_student" Type="Self.sch_program_batch_student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sch_program_batch">
+              <PropertyRef Name="idBatch" />
+            </Principal>
+            <Dependent Role="sch_program_batch_student">
+              <PropertyRef Name="idBatch" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_sch_program_batch_student_sch_program_section">
+          <End Role="sch_program_section" Type="Self.sch_program_section" Multiplicity="1" />
+          <End Role="sch_program_batch_student" Type="Self.sch_program_batch_student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sch_program_section">
+              <PropertyRef Name="idSection" />
+            </Principal>
+            <Dependent Role="sch_program_batch_student">
+              <PropertyRef Name="idSection" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_sch_program_batch_sys_program">
+          <End Role="sys_program" Type="Self.sys_program" Multiplicity="1" />
+          <End Role="sch_program_batch" Type="Self.sch_program_batch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sys_program">
+              <PropertyRef Name="idProgram" />
+            </Principal>
+            <Dependent Role="sch_program_batch">
+              <PropertyRef Name="idProgram" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_sch_program_batch_sys_school">
+          <End Role="sys_school" Type="Self.sys_school" Multiplicity="1" />
+          <End Role="sch_program_batch" Type="Self.sch_program_batch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sys_school">
+              <PropertyRef Name="idSchool" />
+            </Principal>
+            <Dependent Role="sch_program_batch">
+              <PropertyRef Name="idSchool" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_sch_program_section_sys_program">
+          <End Role="sys_program" Type="Self.sys_program" Multiplicity="1" />
+          <End Role="sch_program_section" Type="Self.sch_program_section" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sys_program">
+              <PropertyRef Name="idProgram" />
+            </Principal>
+            <Dependent Role="sch_program_section">
+              <PropertyRef Name="idProgram" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_sch_program_section_sys_school">
+          <End Role="sys_school" Type="Self.sys_school" Multiplicity="1" />
+          <End Role="sch_program_section" Type="Self.sch_program_section" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sys_school">
+              <PropertyRef Name="idSchool" />
+            </Principal>
+            <Dependent Role="sch_program_section">
+              <PropertyRef Name="idSchool" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_sch_student_sch_parent">
+          <End Role="sch_parent" Type="Self.sch_parent" Multiplicity="1" />
+          <End Role="sch_student" Type="Self.sch_student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sch_parent">
+              <PropertyRef Name="idUser" />
+            </Principal>
+            <Dependent Role="sch_student">
+              <PropertyRef Name="idParent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_sch_student_sys_school">
+          <End Role="sys_school" Type="Self.sys_school" Multiplicity="1" />
+          <End Role="sch_student" Type="Self.sch_student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sys_school">
+              <PropertyRef Name="idSchool" />
+            </Principal>
+            <Dependent Role="sch_student">
+              <PropertyRef Name="idSchool" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_sch_student_sys_user">
+          <End Role="sys_user" Type="Self.sys_user" Multiplicity="1" />
+          <End Role="sch_student" Type="Self.sch_student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sys_user">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="sch_student">
+              <PropertyRef Name="idUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_sch_teacher_sys_school">
+          <End Role="sys_school" Type="Self.sys_school" Multiplicity="1" />
+          <End Role="sch_teacher" Type="Self.sch_teacher" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sys_school">
+              <PropertyRef Name="idSchool" />
+            </Principal>
+            <Dependent Role="sch_teacher">
+              <PropertyRef Name="idSchool" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_sys_program_sys_program_model">
+          <End Role="sys_program_model" Type="Self.sys_program_model" Multiplicity="1" />
+          <End Role="sys_program" Type="Self.sys_program" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sys_program_model">
+              <PropertyRef Name="idProgramModel" />
+            </Principal>
+            <Dependent Role="sys_program">
+              <PropertyRef Name="idProgramModel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_sys_program_sys_program_type">
+          <End Role="sys_program_type" Type="Self.sys_program_type" Multiplicity="1" />
+          <End Role="sys_program" Type="Self.sys_program" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sys_program_type">
+              <PropertyRef Name="idProgramType" />
+            </Principal>
+            <Dependent Role="sys_program">
+              <PropertyRef Name="idProgramType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_sys_program_sys_program_type1">
+          <End Role="sys_program_type" Type="Self.sys_program_type" Multiplicity="1" />
+          <End Role="sys_program" Type="Self.sys_program" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sys_program_type">
+              <PropertyRef Name="idProgramType" />
+            </Principal>
+            <Dependent Role="sys_program">
+              <PropertyRef Name="idProgramType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_sys_school_sys_business">
+          <End Role="sys_business" Type="Self.sys_business" Multiplicity="1" />
+          <End Role="sys_school" Type="Self.sys_school" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sys_business">
+              <PropertyRef Name="idBusiness" />
+            </Principal>
+            <Dependent Role="sys_school">
+              <PropertyRef Name="idBusiness" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="fn_expense_rpt_month_view" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fin_year" Type="int" Mode="In" />
+          <Parameter Name="sch_id" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="MonthName" Type="nvarchar" MaxLength="30" />
+                <Property Name="Amount" Type="money" Nullable="false" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="fn_sch_expense_consol_month_view" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fin_year" Type="int" Mode="In" />
+          <Parameter Name="sch_id" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="Expenses" Type="varchar" MaxLength="5" Nullable="false" />
+                <Property Name="Jan" Type="decimal" Precision="10" Scale="0" />
+                <Property Name="Feb" Type="decimal" Precision="10" Scale="0" />
+                <Property Name="Mar" Type="decimal" Precision="10" Scale="0" />
+                <Property Name="Apr" Type="decimal" Precision="10" Scale="0" />
+                <Property Name="May" Type="decimal" Precision="10" Scale="0" />
+                <Property Name="Jun" Type="decimal" Precision="10" Scale="0" />
+                <Property Name="Jul" Type="decimal" Precision="10" Scale="0" />
+                <Property Name="Aug" Type="decimal" Precision="10" Scale="0" />
+                <Property Name="Sep" Type="decimal" Precision="10" Scale="0" />
+                <Property Name="Oct" Type="decimal" Precision="10" Scale="0" />
+                <Property Name="Nov" Type="decimal" Precision="10" Scale="0" />
+                <Property Name="Dec" Type="decimal" Precision="10" Scale="0" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="fn_sch_expense_type_month_view" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fin_year" Type="int" Mode="In" />
+          <Parameter Name="sch_id" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="Expense Type" Type="varchar" MaxLength="100" />
+                <Property Name="Jan" Type="decimal" Precision="10" Scale="0" />
+                <Property Name="Feb" Type="decimal" Precision="10" Scale="0" />
+                <Property Name="Mar" Type="decimal" Precision="10" Scale="0" />
+                <Property Name="Apr" Type="decimal" Precision="10" Scale="0" />
+                <Property Name="May" Type="decimal" Precision="10" Scale="0" />
+                <Property Name="Jun" Type="decimal" Precision="10" Scale="0" />
+                <Property Name="Jul" Type="decimal" Precision="10" Scale="0" />
+                <Property Name="Aug" Type="decimal" Precision="10" Scale="0" />
+                <Property Name="Sep" Type="decimal" Precision="10" Scale="0" />
+                <Property Name="Oct" Type="decimal" Precision="10" Scale="0" />
+                <Property Name="Nov" Type="decimal" Precision="10" Scale="0" />
+                <Property Name="Dec" Type="decimal" Precision="10" Scale="0" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <EntityContainer Name="SchoolOrbitModelStoreContainer">
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sch_department" EntityType="Self.sch_department" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sch_employee" EntityType="Self.sch_employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sch_employee_docs" EntityType="Self.sch_employee_docs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sch_expense_attachment" EntityType="Self.sch_expense_attachment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sch_expense_trans" EntityType="Self.sch_expense_trans" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sch_expense_type" EntityType="Self.sch_expense_type" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sch_fee_discount" EntityType="Self.sch_fee_discount" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sch_fee_payment_plan" EntityType="Self.sch_fee_payment_plan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sch_fee_term" EntityType="Self.sch_fee_term" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sch_fee_type" EntityType="Self.sch_fee_type" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sch_parent" EntityType="Self.sch_parent" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sch_program_batch" EntityType="Self.sch_program_batch" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sch_program_batch_fee" EntityType="Self.sch_program_batch_fee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sch_program_batch_student" EntityType="Self.sch_program_batch_student" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sch_program_section" EntityType="Self.sch_program_section" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sch_student" EntityType="Self.sch_student" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sch_teacher" EntityType="Self.sch_teacher" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sch_user_roles" EntityType="Self.sch_user_roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sys_academic_year" EntityType="Self.sys_academic_year" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sys_business" EntityType="Self.sys_business" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sys_country" EntityType="Self.sys_country" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sys_program" EntityType="Self.sys_program" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sys_program_model" EntityType="Self.sys_program_model" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sys_program_type" EntityType="Self.sys_program_type" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sys_roles" EntityType="Self.sys_roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sys_school" EntityType="Self.sys_school" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sys_states" EntityType="Self.sys_states" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sys_user" EntityType="Self.sys_user" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sch_fee_schedule" EntityType="Self.sch_fee_schedule" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [sch_fee_schedule].[idSchool] AS [idSchool]
+    FROM [dbo].[sch_fee_schedule] AS [sch_fee_schedule]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vew_user_roles" EntityType="Self.vew_user_roles" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vew_user_roles].[iduser] AS [iduser], 
+    [vew_user_roles].[idschool] AS [idschool], 
+    [vew_user_roles].[displayname] AS [displayname], 
+    [vew_user_roles].[idrole] AS [idrole], 
+    [vew_user_roles].[role_name] AS [role_name], 
+    [vew_user_roles].[id] AS [id]
+    FROM [dbo].[vew_user_roles] AS [vew_user_roles]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_sch_department_sys_school" Association="Self.FK_sch_department_sys_school">
+            <End Role="sys_school" EntitySet="sys_school" />
+            <End Role="sch_department" EntitySet="sch_department" />
+          </AssociationSet>
+          <AssociationSet Name="FK_sch_employee_docs_sys_school" Association="Self.FK_sch_employee_docs_sys_school">
+            <End Role="sys_school" EntitySet="sys_school" />
+            <End Role="sch_employee_docs" EntitySet="sch_employee_docs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_sch_employee_sch_department" Association="Self.FK_sch_employee_sch_department">
+            <End Role="sch_department" EntitySet="sch_department" />
+            <End Role="sch_employee" EntitySet="sch_employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_sch_employee_sys_school" Association="Self.FK_sch_employee_sys_school">
+            <End Role="sys_school" EntitySet="sys_school" />
+            <End Role="sch_employee" EntitySet="sch_employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_sch_expense_trans_sch_expense_type" Association="Self.FK_sch_expense_trans_sch_expense_type">
+            <End Role="sch_expense_type" EntitySet="sch_expense_type" />
+            <End Role="sch_expense_trans" EntitySet="sch_expense_trans" />
+          </AssociationSet>
+          <AssociationSet Name="FK_sch_expense_trans_sys_school" Association="Self.FK_sch_expense_trans_sys_school">
+            <End Role="sys_school" EntitySet="sys_school" />
+            <End Role="sch_expense_trans" EntitySet="sch_expense_trans" />
+          </AssociationSet>
+          <AssociationSet Name="FK_sch_expense_type_sys_school" Association="Self.FK_sch_expense_type_sys_school">
+            <End Role="sys_school" EntitySet="sys_school" />
+            <End Role="sch_expense_type" EntitySet="sch_expense_type" />
+          </AssociationSet>
+          <AssociationSet Name="FK_sch_fee_type_sys_school" Association="Self.FK_sch_fee_type_sys_school">
+            <End Role="sys_school" EntitySet="sys_school" />
+            <End Role="sch_fee_type" EntitySet="sch_fee_type" />
+          </AssociationSet>
+          <AssociationSet Name="FK_sch_parent_sys_user" Association="Self.FK_sch_parent_sys_user">
+            <End Role="sys_user" EntitySet="sys_user" />
+            <End Role="sch_parent" EntitySet="sch_parent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_sch_program_batch_fee_sch_fee_type" Association="Self.FK_sch_program_batch_fee_sch_fee_type">
+            <End Role="sch_fee_type" EntitySet="sch_fee_type" />
+            <End Role="sch_program_batch_fee" EntitySet="sch_program_batch_fee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_sch_program_batch_fee_sch_program_batch" Association="Self.FK_sch_program_batch_fee_sch_program_batch">
+            <End Role="sch_program_batch" EntitySet="sch_program_batch" />
+            <End Role="sch_program_batch_fee" EntitySet="sch_program_batch_fee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_sch_program_batch_fee_sys_academic_year" Association="Self.FK_sch_program_batch_fee_sys_academic_year">
+            <End Role="sys_academic_year" EntitySet="sys_academic_year" />
+            <End Role="sch_program_batch_fee" EntitySet="sch_program_batch_fee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_sch_program_batch_student_sch_fee_discount" Association="Self.FK_sch_program_batch_student_sch_fee_discount">
+            <End Role="sch_fee_discount" EntitySet="sch_fee_discount" />
+            <End Role="sch_program_batch_student" EntitySet="sch_program_batch_student" />
+          </AssociationSet>
+          <AssociationSet Name="FK_sch_program_batch_student_sch_fee_term" Association="Self.FK_sch_program_batch_student_sch_fee_term">
+            <End Role="sch_fee_payment_plan" EntitySet="sch_fee_payment_plan" />
+            <End Role="sch_program_batch_student" EntitySet="sch_program_batch_student" />
+          </AssociationSet>
+          <AssociationSet Name="FK_sch_program_batch_student_sch_program_batch" Association="Self.FK_sch_program_batch_student_sch_program_batch">
+            <End Role="sch_program_batch" EntitySet="sch_program_batch" />
+            <End Role="sch_program_batch_student" EntitySet="sch_program_batch_student" />
+          </AssociationSet>
+          <AssociationSet Name="FK_sch_program_batch_student_sch_program_section" Association="Self.FK_sch_program_batch_student_sch_program_section">
+            <End Role="sch_program_section" EntitySet="sch_program_section" />
+            <End Role="sch_program_batch_student" EntitySet="sch_program_batch_student" />
+          </AssociationSet>
+          <AssociationSet Name="FK_sch_program_batch_sys_program" Association="Self.FK_sch_program_batch_sys_program">
+            <End Role="sys_program" EntitySet="sys_program" />
+            <End Role="sch_program_batch" EntitySet="sch_program_batch" />
+          </AssociationSet>
+          <AssociationSet Name="FK_sch_program_batch_sys_school" Association="Self.FK_sch_program_batch_sys_school">
+            <End Role="sys_school" EntitySet="sys_school" />
+            <End Role="sch_program_batch" EntitySet="sch_program_batch" />
+          </AssociationSet>
+          <AssociationSet Name="FK_sch_program_section_sys_program" Association="Self.FK_sch_program_section_sys_program">
+            <End Role="sys_program" EntitySet="sys_program" />
+            <End Role="sch_program_section" EntitySet="sch_program_section" />
+          </AssociationSet>
+          <AssociationSet Name="FK_sch_program_section_sys_school" Association="Self.FK_sch_program_section_sys_school">
+            <End Role="sys_school" EntitySet="sys_school" />
+            <End Role="sch_program_section" EntitySet="sch_program_section" />
+          </AssociationSet>
+          <AssociationSet Name="FK_sch_student_sch_parent" Association="Self.FK_sch_student_sch_parent">
+            <End Role="sch_parent" EntitySet="sch_parent" />
+            <End Role="sch_student" EntitySet="sch_student" />
+          </AssociationSet>
+          <AssociationSet Name="FK_sch_student_sys_school" Association="Self.FK_sch_student_sys_school">
+            <End Role="sys_school" EntitySet="sys_school" />
+            <End Role="sch_student" EntitySet="sch_student" />
+          </AssociationSet>
+          <AssociationSet Name="FK_sch_student_sys_user" Association="Self.FK_sch_student_sys_user">
+            <End Role="sys_user" EntitySet="sys_user" />
+            <End Role="sch_student" EntitySet="sch_student" />
+          </AssociationSet>
+          <AssociationSet Name="FK_sch_teacher_sys_school" Association="Self.FK_sch_teacher_sys_school">
+            <End Role="sys_school" EntitySet="sys_school" />
+            <End Role="sch_teacher" EntitySet="sch_teacher" />
+          </AssociationSet>
+          <AssociationSet Name="FK_sys_program_sys_program_model" Association="Self.FK_sys_program_sys_program_model">
+            <End Role="sys_program_model" EntitySet="sys_program_model" />
+            <End Role="sys_program" EntitySet="sys_program" />
+          </AssociationSet>
+          <AssociationSet Name="FK_sys_program_sys_program_type" Association="Self.FK_sys_program_sys_program_type">
+            <End Role="sys_program_type" EntitySet="sys_program_type" />
+            <End Role="sys_program" EntitySet="sys_program" />
+          </AssociationSet>
+          <AssociationSet Name="FK_sys_program_sys_program_type1" Association="Self.FK_sys_program_sys_program_type1">
+            <End Role="sys_program_type" EntitySet="sys_program_type" />
+            <End Role="sys_program" EntitySet="sys_program" />
+          </AssociationSet>
+          <AssociationSet Name="FK_sys_school_sys_business" Association="Self.FK_sys_school_sys_business">
+            <End Role="sys_business" EntitySet="sys_business" />
+            <End Role="sys_school" EntitySet="sys_school" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SchoolOrbitModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="SchoolOrbitEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AspNetRoles" EntityType="SchoolOrbitModel.AspNetRole" />
+          <EntitySet Name="AspNetUserClaims" EntityType="SchoolOrbitModel.AspNetUserClaim" />
+          <EntitySet Name="AspNetUserLogins" EntityType="SchoolOrbitModel.AspNetUserLogin" />
+          <EntitySet Name="AspNetUsers" EntityType="SchoolOrbitModel.AspNetUser" />
+          <EntitySet Name="sch_department" EntityType="SchoolOrbitModel.sch_department" />
+          <EntitySet Name="sch_employee_docs" EntityType="SchoolOrbitModel.sch_employee_docs" />
+          <EntitySet Name="sch_fee_term" EntityType="SchoolOrbitModel.sch_fee_term" />
+          <EntitySet Name="sch_fee_type" EntityType="SchoolOrbitModel.sch_fee_type" />
+          <EntitySet Name="sch_parent" EntityType="SchoolOrbitModel.sch_parent" />
+          <EntitySet Name="sch_program_batch" EntityType="SchoolOrbitModel.sch_program_batch" />
+          <EntitySet Name="sch_student" EntityType="SchoolOrbitModel.sch_student" />
+          <EntitySet Name="sch_teacher" EntityType="SchoolOrbitModel.sch_teacher" />
+          <EntitySet Name="sys_business" EntityType="SchoolOrbitModel.sys_business" />
+          <EntitySet Name="sys_country" EntityType="SchoolOrbitModel.sys_country" />
+          <EntitySet Name="sys_program_model" EntityType="SchoolOrbitModel.sys_program_model" />
+          <EntitySet Name="sys_program_type" EntityType="SchoolOrbitModel.sys_program_type" />
+          <EntitySet Name="sys_school" EntityType="SchoolOrbitModel.sys_school" />
+          <EntitySet Name="sys_states" EntityType="SchoolOrbitModel.sys_states" />
+          <EntitySet Name="sys_user" EntityType="SchoolOrbitModel.sys_user" />
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="SchoolOrbitModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaim" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="SchoolOrbitModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogin" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_sch_department_sys_school" Association="SchoolOrbitModel.FK_sch_department_sys_school">
+            <End Role="sys_school" EntitySet="sys_school" />
+            <End Role="sch_department" EntitySet="sch_department" />
+          </AssociationSet>
+          <AssociationSet Name="FK_sch_employee_docs_sys_school" Association="SchoolOrbitModel.FK_sch_employee_docs_sys_school">
+            <End Role="sys_school" EntitySet="sys_school" />
+            <End Role="sch_employee_docs" EntitySet="sch_employee_docs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_sch_fee_type_sys_school" Association="SchoolOrbitModel.FK_sch_fee_type_sys_school">
+            <End Role="sys_school" EntitySet="sys_school" />
+            <End Role="sch_fee_type" EntitySet="sch_fee_type" />
+          </AssociationSet>
+          <AssociationSet Name="FK_sch_student_sch_parent" Association="SchoolOrbitModel.FK_sch_student_sch_parent">
+            <End Role="sch_parent" EntitySet="sch_parent" />
+            <End Role="sch_student" EntitySet="sch_student" />
+          </AssociationSet>
+          <AssociationSet Name="FK_sch_program_batch_sys_school" Association="SchoolOrbitModel.FK_sch_program_batch_sys_school">
+            <End Role="sys_school" EntitySet="sys_school" />
+            <End Role="sch_program_batch" EntitySet="sch_program_batch" />
+          </AssociationSet>
+          <AssociationSet Name="FK_sch_student_sys_school" Association="SchoolOrbitModel.FK_sch_student_sys_school">
+            <End Role="sys_school" EntitySet="sys_school" />
+            <End Role="sch_student" EntitySet="sch_student" />
+          </AssociationSet>
+          <AssociationSet Name="FK_sch_teacher_sys_school" Association="SchoolOrbitModel.FK_sch_teacher_sys_school">
+            <End Role="sys_school" EntitySet="sys_school" />
+            <End Role="sch_teacher" EntitySet="sch_teacher" />
+          </AssociationSet>
+          <AssociationSet Name="FK_sys_school_sys_business" Association="SchoolOrbitModel.FK_sys_school_sys_business">
+            <End Role="sys_business" EntitySet="sys_business" />
+            <End Role="sys_school" EntitySet="sys_school" />
+          </AssociationSet>
+          <AssociationSet Name="AspNetUserRoles" Association="SchoolOrbitModel.AspNetUserRoles">
+            <End Role="AspNetRole" EntitySet="AspNetRoles" />
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+          </AssociationSet>
+          <EntitySet Name="sch_expense_type" EntityType="SchoolOrbitModel.sch_expense_type" />
+          <AssociationSet Name="FK_sch_expense_type_sys_school" Association="SchoolOrbitModel.FK_sch_expense_type_sys_school">
+            <End Role="sys_school" EntitySet="sys_school" />
+            <End Role="sch_expense_type" EntitySet="sch_expense_type" />
+          </AssociationSet>
+          <FunctionImport Name="fn_sch_expense_consol_month_view" IsComposable="true" ReturnType="Collection(SchoolOrbitModel.fn_sch_expense_consol_month_view_Result)">
+            <Parameter Name="fin_year" Mode="In" Type="Int32" />
+            <Parameter Name="sch_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="fn_sch_expense_type_month_view" IsComposable="true" ReturnType="Collection(SchoolOrbitModel.fn_sch_expense_type_month_view_Result)">
+            <Parameter Name="fin_year" Mode="In" Type="Int32" />
+            <Parameter Name="sch_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="sch_expense_attachment" EntityType="SchoolOrbitModel.sch_expense_attachment" />
+          <EntitySet Name="sch_expense_trans" EntityType="SchoolOrbitModel.sch_expense_trans" />
+          <AssociationSet Name="FK_sch_expense_trans_sch_expense_type" Association="SchoolOrbitModel.FK_sch_expense_trans_sch_expense_type">
+            <End Role="sch_expense_type" EntitySet="sch_expense_type" />
+            <End Role="sch_expense_trans" EntitySet="sch_expense_trans" />
+          </AssociationSet>
+          <AssociationSet Name="FK_sch_expense_trans_sys_school" Association="SchoolOrbitModel.FK_sch_expense_trans_sys_school">
+            <End Role="sys_school" EntitySet="sys_school" />
+            <End Role="sch_expense_trans" EntitySet="sch_expense_trans" />
+          </AssociationSet>
+          <EntitySet Name="sch_employee" EntityType="SchoolOrbitModel.sch_employee" />
+          <AssociationSet Name="FK_sch_employee_sch_department" Association="SchoolOrbitModel.FK_sch_employee_sch_department">
+            <End Role="sch_department" EntitySet="sch_department" />
+            <End Role="sch_employee" EntitySet="sch_employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_sch_employee_sys_school" Association="SchoolOrbitModel.FK_sch_employee_sys_school">
+            <End Role="sys_school" EntitySet="sys_school" />
+            <End Role="sch_employee" EntitySet="sch_employee" />
+          </AssociationSet>
+          <FunctionImport Name="fn_expense_rpt_month_view" IsComposable="true" ReturnType="Collection(SchoolOrbitModel.fn_expense_rpt_month_view_Result)">
+            <Parameter Name="fin_year" Mode="In" Type="Int32" />
+            <Parameter Name="sch_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="sch_fee_discount" EntityType="SchoolOrbitModel.sch_fee_discount" />
+          <EntitySet Name="sch_fee_payment_plan" EntityType="SchoolOrbitModel.sch_fee_payment_plan" />
+          <EntitySet Name="sch_program_batch_fee" EntityType="SchoolOrbitModel.sch_program_batch_fee" />
+          <EntitySet Name="sch_program_batch_student" EntityType="SchoolOrbitModel.sch_program_batch_student" />
+          <EntitySet Name="sch_program_section" EntityType="SchoolOrbitModel.sch_program_section" />
+          <EntitySet Name="sys_academic_year" EntityType="SchoolOrbitModel.sys_academic_year" />
+          <EntitySet Name="sys_program" EntityType="SchoolOrbitModel.sys_program" />
+          <EntitySet Name="sch_fee_schedule" EntityType="SchoolOrbitModel.sch_fee_schedule" />
+          <AssociationSet Name="FK_sch_program_batch_student_sch_fee_discount" Association="SchoolOrbitModel.FK_sch_program_batch_student_sch_fee_discount">
+            <End Role="sch_fee_discount" EntitySet="sch_fee_discount" />
+            <End Role="sch_program_batch_student" EntitySet="sch_program_batch_student" />
+          </AssociationSet>
+          <AssociationSet Name="FK_sch_program_batch_student_sch_fee_term" Association="SchoolOrbitModel.FK_sch_program_batch_student_sch_fee_term">
+            <End Role="sch_fee_payment_plan" EntitySet="sch_fee_payment_plan" />
+            <End Role="sch_program_batch_student" EntitySet="sch_program_batch_student" />
+          </AssociationSet>
+          <AssociationSet Name="FK_sch_program_batch_fee_sch_fee_type" Association="SchoolOrbitModel.FK_sch_program_batch_fee_sch_fee_type">
+            <End Role="sch_fee_type" EntitySet="sch_fee_type" />
+            <End Role="sch_program_batch_fee" EntitySet="sch_program_batch_fee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_sch_program_batch_fee_sch_program_batch" Association="SchoolOrbitModel.FK_sch_program_batch_fee_sch_program_batch">
+            <End Role="sch_program_batch" EntitySet="sch_program_batch" />
+            <End Role="sch_program_batch_fee" EntitySet="sch_program_batch_fee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_sch_program_batch_student_sch_program_batch" Association="SchoolOrbitModel.FK_sch_program_batch_student_sch_program_batch">
+            <End Role="sch_program_batch" EntitySet="sch_program_batch" />
+            <End Role="sch_program_batch_student" EntitySet="sch_program_batch_student" />
+          </AssociationSet>
+          <AssociationSet Name="FK_sch_program_batch_sys_program" Association="SchoolOrbitModel.FK_sch_program_batch_sys_program">
+            <End Role="sys_program" EntitySet="sys_program" />
+            <End Role="sch_program_batch" EntitySet="sch_program_batch" />
+          </AssociationSet>
+          <AssociationSet Name="FK_sch_program_batch_fee_sys_academic_year" Association="SchoolOrbitModel.FK_sch_program_batch_fee_sys_academic_year">
+            <End Role="sys_academic_year" EntitySet="sys_academic_year" />
+            <End Role="sch_program_batch_fee" EntitySet="sch_program_batch_fee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_sch_program_batch_student_sch_program_section" Association="SchoolOrbitModel.FK_sch_program_batch_student_sch_program_section">
+            <End Role="sch_program_section" EntitySet="sch_program_section" />
+            <End Role="sch_program_batch_student" EntitySet="sch_program_batch_student" />
+          </AssociationSet>
+          <AssociationSet Name="FK_sch_program_section_sys_program" Association="SchoolOrbitModel.FK_sch_program_section_sys_program">
+            <End Role="sys_program" EntitySet="sys_program" />
+            <End Role="sch_program_section" EntitySet="sch_program_section" />
+          </AssociationSet>
+          <AssociationSet Name="FK_sch_program_section_sys_school" Association="SchoolOrbitModel.FK_sch_program_section_sys_school">
+            <End Role="sys_school" EntitySet="sys_school" />
+            <End Role="sch_program_section" EntitySet="sch_program_section" />
+          </AssociationSet>
+          <AssociationSet Name="FK_sys_program_sys_program_model" Association="SchoolOrbitModel.FK_sys_program_sys_program_model">
+            <End Role="sys_program_model" EntitySet="sys_program_model" />
+            <End Role="sys_program" EntitySet="sys_program" />
+          </AssociationSet>
+          <AssociationSet Name="FK_sys_program_sys_program_type" Association="SchoolOrbitModel.FK_sys_program_sys_program_type">
+            <End Role="sys_program_type" EntitySet="sys_program_type" />
+            <End Role="sys_program" EntitySet="sys_program" />
+          </AssociationSet>
+          <AssociationSet Name="FK_sys_program_sys_program_type1" Association="SchoolOrbitModel.FK_sys_program_sys_program_type1">
+            <End Role="sys_program_type" EntitySet="sys_program_type" />
+            <End Role="sys_program" EntitySet="sys_program" />
+          </AssociationSet>
+          <EntitySet Name="sys_roles" EntityType="SchoolOrbitModel.sys_roles" />
+          <EntitySet Name="sch_user_roles" EntityType="SchoolOrbitModel.sch_user_roles" />
+          <EntitySet Name="vew_user_roles" EntityType="SchoolOrbitModel.vew_user_roles" />
+          <AssociationSet Name="FK_sch_parent_sys_user" Association="SchoolOrbitModel.FK_sch_parent_sys_user">
+            <End Role="sys_user" EntitySet="sys_user" />
+            <End Role="sch_parent" EntitySet="sch_parent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_sch_student_sys_user" Association="SchoolOrbitModel.FK_sch_student_sys_user">
+            <End Role="sys_user" EntitySet="sys_user" />
+            <End Role="sch_student" EntitySet="sch_student" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="AspNetRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUsers" Relationship="SchoolOrbitModel.AspNetUserRoles" FromRole="AspNetRole" ToRole="AspNetUser" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaim">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUser" Relationship="SchoolOrbitModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaim" ToRole="AspNetUser" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogin">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ProviderKey" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUser" Relationship="SchoolOrbitModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogin" ToRole="AspNetUser" />
+        </EntityType>
+        <EntityType Name="AspNetUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="IdUser" Type="Int32" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Displayname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUserClaims" Relationship="SchoolOrbitModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserClaim" />
+          <NavigationProperty Name="AspNetUserLogins" Relationship="SchoolOrbitModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserLogin" />
+          <NavigationProperty Name="AspNetRoles" Relationship="SchoolOrbitModel.AspNetUserRoles" FromRole="AspNetUser" ToRole="AspNetRole" />
+        </EntityType>
+        <EntityType Name="sch_department">
+          <Key>
+            <PropertyRef Name="idDepartment" />
+          </Key>
+          <Property Name="idDepartment" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idSchool" Type="Int32" Nullable="false" />
+          <Property Name="department_name" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="sys_school" Relationship="SchoolOrbitModel.FK_sch_department_sys_school" FromRole="sch_department" ToRole="sys_school" />
+          <NavigationProperty Name="sch_employee" Relationship="SchoolOrbitModel.FK_sch_employee_sch_department" FromRole="sch_department" ToRole="sch_employee" />
+        </EntityType>
+        <EntityType Name="sch_employee_docs">
+          <Key>
+            <PropertyRef Name="idSchool" />
+            <PropertyRef Name="idUser" />
+          </Key>
+          <Property Name="idSchool" Type="Int32" Nullable="false" />
+          <Property Name="idUser" Type="Int32" Nullable="false" />
+          <Property Name="employee_number" Type="Int32" Nullable="false" />
+          <Property Name="doc_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="sys_school" Relationship="SchoolOrbitModel.FK_sch_employee_docs_sys_school" FromRole="sch_employee_docs" ToRole="sys_school" />
+        </EntityType>
+        <EntityType Name="sch_fee_term">
+          <Key>
+            <PropertyRef Name="idFeeTerm" />
+          </Key>
+          <Property Name="idFeeTerm" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idSchool" Type="Int32" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="date_start" Type="DateTime" Precision="3" />
+          <Property Name="date_end" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="sch_fee_type">
+          <Key>
+            <PropertyRef Name="idFeeType" />
+          </Key>
+          <Property Name="idFeeType" Type="Int32" Nullable="false" />
+          <Property Name="idSchool" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="sys_school" Relationship="SchoolOrbitModel.FK_sch_fee_type_sys_school" FromRole="sch_fee_type" ToRole="sys_school" />
+          <NavigationProperty Name="sch_program_batch_fee" Relationship="SchoolOrbitModel.FK_sch_program_batch_fee_sch_fee_type" FromRole="sch_fee_type" ToRole="sch_program_batch_fee" />
+        </EntityType>
+        <EntityType Name="sch_parent">
+          <Key>
+            <PropertyRef Name="idUser" />
+          </Key>
+          <Property Name="idUser" Type="Int32" Nullable="false" />
+          <Property Name="father_guardian_name" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="father_guardian_phone_no" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="father_guardian_email" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="father_guardian_occupation" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="mother_name" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="mother_phone_no" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="mother_email" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="mother_occupation" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="ts_entered" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ts_updated" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="sch_student" Relationship="SchoolOrbitModel.FK_sch_student_sch_parent" FromRole="sch_parent" ToRole="sch_student" />
+          <NavigationProperty Name="sys_user" Relationship="SchoolOrbitModel.FK_sch_parent_sys_user" FromRole="sch_parent" ToRole="sys_user" />
+        </EntityType>
+        <EntityType Name="sch_program_batch">
+          <Key>
+            <PropertyRef Name="idBatch" />
+          </Key>
+          <Property Name="idBatch" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idSchool" Type="Int32" Nullable="false" />
+          <Property Name="idProgram" Type="Int32" Nullable="false" />
+          <Property Name="date_start" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="date_end" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="is_active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="sys_school" Relationship="SchoolOrbitModel.FK_sch_program_batch_sys_school" FromRole="sch_program_batch" ToRole="sys_school" />
+          <Property Name="year" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="sch_program_batch_fee" Relationship="SchoolOrbitModel.FK_sch_program_batch_fee_sch_program_batch" FromRole="sch_program_batch" ToRole="sch_program_batch_fee" />
+          <NavigationProperty Name="sch_program_batch_student" Relationship="SchoolOrbitModel.FK_sch_program_batch_student_sch_program_batch" FromRole="sch_program_batch" ToRole="sch_program_batch_student" />
+          <NavigationProperty Name="sys_program" Relationship="SchoolOrbitModel.FK_sch_program_batch_sys_program" FromRole="sch_program_batch" ToRole="sys_program" />
+        </EntityType>
+        <EntityType Name="sch_student">
+          <Key>
+            <PropertyRef Name="idSchool" />
+            <PropertyRef Name="idUser" />
+          </Key>
+          <Property Name="idSchool" Type="Int32" Nullable="false" />
+          <Property Name="idUser" Type="Int32" Nullable="false" />
+          <Property Name="admission_number" Type="Int32" Nullable="false" />
+          <Property Name="admission_date" Type="DateTime" Precision="3" />
+          <Property Name="transfer_date" Type="DateTime" Precision="3" />
+          <Property Name="is_active" Type="Boolean" Nullable="false" />
+          <Property Name="ts_entered" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ts_updated" Type="DateTime" Precision="3" />
+          <Property Name="idParent" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="sch_parent" Relationship="SchoolOrbitModel.FK_sch_student_sch_parent" FromRole="sch_student" ToRole="sch_parent" />
+          <NavigationProperty Name="sys_school" Relationship="SchoolOrbitModel.FK_sch_student_sys_school" FromRole="sch_student" ToRole="sys_school" />
+          <NavigationProperty Name="sys_user" Relationship="SchoolOrbitModel.FK_sch_student_sys_user" FromRole="sch_student" ToRole="sys_user" />
+        </EntityType>
+        <EntityType Name="sch_teacher">
+          <Key>
+            <PropertyRef Name="idSchool" />
+            <PropertyRef Name="idUser" />
+          </Key>
+          <Property Name="idSchool" Type="Int32" Nullable="false" />
+          <Property Name="idUser" Type="Int32" Nullable="false" />
+          <Property Name="idSubject" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="sys_school" Relationship="SchoolOrbitModel.FK_sch_teacher_sys_school" FromRole="sch_teacher" ToRole="sys_school" />
+        </EntityType>
+        <EntityType Name="sys_business">
+          <Key>
+            <PropertyRef Name="idBusiness" />
+          </Key>
+          <Property Name="idBusiness" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ts_entered" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ts_updated" Type="DateTime" Precision="3" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="sys_school" Relationship="SchoolOrbitModel.FK_sys_school_sys_business" FromRole="sys_business" ToRole="sys_school" />
+        </EntityType>
+        <EntityType Name="sys_country">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="country_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="sys_program_model">
+          <Key>
+            <PropertyRef Name="idProgramModel" />
+          </Key>
+          <Property Name="idProgramModel" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="sys_program" Relationship="SchoolOrbitModel.FK_sys_program_sys_program_model" FromRole="sys_program_model" ToRole="sys_program" />
+        </EntityType>
+        <EntityType Name="sys_program_type">
+          <Key>
+            <PropertyRef Name="idProgramType" />
+          </Key>
+          <Property Name="idProgramType" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="sys_program" Relationship="SchoolOrbitModel.FK_sys_program_sys_program_type" FromRole="sys_program_type" ToRole="sys_program" />
+          <NavigationProperty Name="sys_program1" Relationship="SchoolOrbitModel.FK_sys_program_sys_program_type1" FromRole="sys_program_type" ToRole="sys_program" />
+          </EntityType>
+        <EntityType Name="sys_school">
+          <Key>
+            <PropertyRef Name="idSchool" />
+          </Key>
+          <Property Name="idSchool" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ts_entered" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ts_updated" Type="DateTime" Precision="3" />
+          <Property Name="idBusiness" Type="Int32" Nullable="false" />
+          <Property Name="school_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="sch_department" Relationship="SchoolOrbitModel.FK_sch_department_sys_school" FromRole="sys_school" ToRole="sch_department" />
+          <NavigationProperty Name="sch_employee_docs" Relationship="SchoolOrbitModel.FK_sch_employee_docs_sys_school" FromRole="sys_school" ToRole="sch_employee_docs" />
+          <NavigationProperty Name="sch_fee_type" Relationship="SchoolOrbitModel.FK_sch_fee_type_sys_school" FromRole="sys_school" ToRole="sch_fee_type" />
+          <NavigationProperty Name="sch_program_batch" Relationship="SchoolOrbitModel.FK_sch_program_batch_sys_school" FromRole="sys_school" ToRole="sch_program_batch" />
+          <NavigationProperty Name="sch_student" Relationship="SchoolOrbitModel.FK_sch_student_sys_school" FromRole="sys_school" ToRole="sch_student" />
+          <NavigationProperty Name="sch_teacher" Relationship="SchoolOrbitModel.FK_sch_teacher_sys_school" FromRole="sys_school" ToRole="sch_teacher" />
+          <NavigationProperty Name="sys_business" Relationship="SchoolOrbitModel.FK_sys_school_sys_business" FromRole="sys_school" ToRole="sys_business" />
+          <NavigationProperty Name="sch_expense_type" Relationship="SchoolOrbitModel.FK_sch_expense_type_sys_school" FromRole="sys_school" ToRole="sch_expense_type" />
+          <NavigationProperty Name="sch_expense_trans" Relationship="SchoolOrbitModel.FK_sch_expense_trans_sys_school" FromRole="sys_school" ToRole="sch_expense_trans" />
+          <NavigationProperty Name="sch_employee" Relationship="SchoolOrbitModel.FK_sch_employee_sys_school" FromRole="sys_school" ToRole="sch_employee" />
+          <NavigationProperty Name="sch_program_section" Relationship="SchoolOrbitModel.FK_sch_program_section_sys_school" FromRole="sys_school" ToRole="sch_program_section" />
+        </EntityType>
+        <EntityType Name="sys_states">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="country_id" Type="Int32" Nullable="false" />
+          <Property Name="state_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="sys_user">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="first_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="middle_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="last_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="gender" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="DOB" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="screen_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="photo_url" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="permanent_address" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="permanent_city" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="permanent_state" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="permanent_country" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="permanent_zip_code" Type="Int32" />
+          <Property Name="present_address" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="present_city" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="present_state" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="present_country" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="present_zip_code" Type="Int32" />
+          <Property Name="paediatrician_details" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="allergic" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="blood_group" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="active" Type="Boolean" Nullable="false" />
+          <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="aadhaar_number" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="contact_number" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="contact_number_alternate" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="sch_parent" Relationship="SchoolOrbitModel.FK_sch_parent_sys_user" FromRole="sys_user" ToRole="sch_parent" />
+          <NavigationProperty Name="sch_student" Relationship="SchoolOrbitModel.FK_sch_student_sys_user" FromRole="sys_user" ToRole="sch_student" />
+        </EntityType>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Type="SchoolOrbitModel.AspNetUser" Role="AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="SchoolOrbitModel.AspNetUserClaim" Role="AspNetUserClaim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaim">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Type="SchoolOrbitModel.AspNetUser" Role="AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="SchoolOrbitModel.AspNetUserLogin" Role="AspNetUserLogin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogin">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_sch_department_sys_school">
+          <End Type="SchoolOrbitModel.sys_school" Role="sys_school" Multiplicity="1" />
+          <End Type="SchoolOrbitModel.sch_department" Role="sch_department" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sys_school">
+              <PropertyRef Name="idSchool" />
+            </Principal>
+            <Dependent Role="sch_department">
+              <PropertyRef Name="idSchool" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_sch_employee_docs_sys_school">
+          <End Type="SchoolOrbitModel.sys_school" Role="sys_school" Multiplicity="1" />
+          <End Type="SchoolOrbitModel.sch_employee_docs" Role="sch_employee_docs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sys_school">
+              <PropertyRef Name="idSchool" />
+            </Principal>
+            <Dependent Role="sch_employee_docs">
+              <PropertyRef Name="idSchool" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_sch_fee_type_sys_school">
+          <End Type="SchoolOrbitModel.sys_school" Role="sys_school" Multiplicity="1" />
+          <End Type="SchoolOrbitModel.sch_fee_type" Role="sch_fee_type" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sys_school">
+              <PropertyRef Name="idSchool" />
+            </Principal>
+            <Dependent Role="sch_fee_type">
+              <PropertyRef Name="idSchool" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_sch_student_sch_parent">
+          <End Type="SchoolOrbitModel.sch_parent" Role="sch_parent" Multiplicity="1" />
+          <End Type="SchoolOrbitModel.sch_student" Role="sch_student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sch_parent">
+              <PropertyRef Name="idUser" />
+            </Principal>
+            <Dependent Role="sch_student">
+              <PropertyRef Name="idParent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_sch_program_batch_sys_school">
+          <End Type="SchoolOrbitModel.sys_school" Role="sys_school" Multiplicity="1" />
+          <End Type="SchoolOrbitModel.sch_program_batch" Role="sch_program_batch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sys_school">
+              <PropertyRef Name="idSchool" />
+            </Principal>
+            <Dependent Role="sch_program_batch">
+              <PropertyRef Name="idSchool" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_sch_student_sys_school">
+          <End Type="SchoolOrbitModel.sys_school" Role="sys_school" Multiplicity="1" />
+          <End Type="SchoolOrbitModel.sch_student" Role="sch_student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sys_school">
+              <PropertyRef Name="idSchool" />
+            </Principal>
+            <Dependent Role="sch_student">
+              <PropertyRef Name="idSchool" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_sch_teacher_sys_school">
+          <End Type="SchoolOrbitModel.sys_school" Role="sys_school" Multiplicity="1" />
+          <End Type="SchoolOrbitModel.sch_teacher" Role="sch_teacher" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sys_school">
+              <PropertyRef Name="idSchool" />
+            </Principal>
+            <Dependent Role="sch_teacher">
+              <PropertyRef Name="idSchool" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_sys_school_sys_business">
+          <End Type="SchoolOrbitModel.sys_business" Role="sys_business" Multiplicity="1" />
+          <End Type="SchoolOrbitModel.sys_school" Role="sys_school" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sys_business">
+              <PropertyRef Name="idBusiness" />
+            </Principal>
+            <Dependent Role="sys_school">
+              <PropertyRef Name="idBusiness" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AspNetUserRoles">
+          <End Type="SchoolOrbitModel.AspNetRole" Role="AspNetRole" Multiplicity="*" />
+          <End Type="SchoolOrbitModel.AspNetUser" Role="AspNetUser" Multiplicity="*" />
+        </Association>
+        <EntityType Name="sch_expense_type">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idSchool" Type="Int32" Nullable="false" />
+          <Property Name="expense_type" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="isactive" Type="Boolean" Nullable="false" />
+          <Property Name="ts_entered" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ts_updated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="last_updated_by" Type="Int32" Nullable="false" />
+          <Property Name="entered_by" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="sys_school" Relationship="SchoolOrbitModel.FK_sch_expense_type_sys_school" FromRole="sch_expense_type" ToRole="sys_school" />
+          <NavigationProperty Name="sch_expense_trans" Relationship="SchoolOrbitModel.FK_sch_expense_trans_sch_expense_type" FromRole="sch_expense_type" ToRole="sch_expense_trans" />
+        </EntityType>
+        <Association Name="FK_sch_expense_type_sys_school">
+          <End Type="SchoolOrbitModel.sys_school" Role="sys_school" Multiplicity="1" />
+          <End Type="SchoolOrbitModel.sch_expense_type" Role="sch_expense_type" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sys_school">
+              <PropertyRef Name="idSchool" />
+            </Principal>
+            <Dependent Role="sch_expense_type">
+              <PropertyRef Name="idSchool" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="fn_sch_expense_consol_month_view_Result">
+          <Property Type="String" Name="Expenses" Nullable="false" MaxLength="5" />
+          <Property Type="Decimal" Name="Jan" Nullable="false" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="Feb" Nullable="false" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="Mar" Nullable="false" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="Apr" Nullable="false" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="May" Nullable="false" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="Jun" Nullable="false" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="Jul" Nullable="false" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="Aug" Nullable="false" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="Sep" Nullable="false" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="Oct" Nullable="false" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="Nov" Nullable="false" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="Dec" Nullable="false" Precision="19" Scale="4" />
+        </ComplexType>
+        <ComplexType Name="fn_sch_expense_type_month_view_Result">
+          <Property Type="String" Name="Expense_Type" Nullable="true" MaxLength="100" />
+          <Property Type="Decimal" Name="Jan" Nullable="false" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="Feb" Nullable="false" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="Mar" Nullable="false" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="Apr" Nullable="false" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="May" Nullable="false" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="Jun" Nullable="false" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="Jul" Nullable="false" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="Aug" Nullable="false" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="Sep" Nullable="false" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="Oct" Nullable="false" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="Nov" Nullable="false" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="Dec" Nullable="false" Precision="19" Scale="4" />
+        </ComplexType>
+        <EntityType Name="sch_expense_attachment">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idexpense_trans" Type="Int32" Nullable="false" />
+          <Property Name="isactive" Type="Boolean" Nullable="false" />
+          <Property Name="ts_entered" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ts_updated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="last_updated_by" Type="Int32" Nullable="false" />
+          <Property Name="entered_by" Type="Int32" Nullable="false" />
+          <Property Name="vocher" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="sch_expense_trans">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idSchool" Type="Int32" Nullable="false" />
+          <Property Name="expense_type_id" Type="Int32" Nullable="false" />
+          <Property Name="expense_date" Type="DateTime" Precision="0" />
+          <Property Name="amount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="remarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="approved_by" Type="Int32" />
+          <Property Name="approved_dt" Type="DateTime" Precision="3" />
+          <Property Name="approved_remarks" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="ts_entered" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ts_updated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="last_updated_by" Type="Int32" Nullable="false" />
+          <Property Name="entered_by" Type="Int32" Nullable="false" />
+          <Property Name="idExpensestatus" Type="Int32" Nullable="false" />
+          <Property Name="mode_of_payment" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="cheque_dd_no" Type="Int32" />
+          <Property Name="issue_bank" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="sch_expense_type" Relationship="SchoolOrbitModel.FK_sch_expense_trans_sch_expense_type" FromRole="sch_expense_trans" ToRole="sch_expense_type" />
+          <NavigationProperty Name="sys_school" Relationship="SchoolOrbitModel.FK_sch_expense_trans_sys_school" FromRole="sch_expense_trans" ToRole="sys_school" />
+          <Property Name="isdeleted" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_sch_expense_trans_sch_expense_type">
+          <End Type="SchoolOrbitModel.sch_expense_type" Role="sch_expense_type" Multiplicity="1" />
+          <End Type="SchoolOrbitModel.sch_expense_trans" Role="sch_expense_trans" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sch_expense_type">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="sch_expense_trans">
+              <PropertyRef Name="expense_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_sch_expense_trans_sys_school">
+          <End Type="SchoolOrbitModel.sys_school" Role="sys_school" Multiplicity="1" />
+          <End Type="SchoolOrbitModel.sch_expense_trans" Role="sch_expense_trans" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sys_school">
+              <PropertyRef Name="idSchool" />
+            </Principal>
+            <Dependent Role="sch_expense_trans">
+              <PropertyRef Name="idSchool" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="sch_employee">
+          <Key>
+            <PropertyRef Name="idSchool" />
+            <PropertyRef Name="idUser" />
+          </Key>
+          <Property Name="idSchool" Type="Int32" Nullable="false" />
+          <Property Name="idUser" Type="Int32" Nullable="false" />
+          <Property Name="employee_number" Type="Int32" Nullable="false" />
+          <Property Name="idDepartment" Type="Int32" />
+          <Property Name="designation" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="WorkStartDate" Type="DateTime" Precision="0" />
+          <Property Name="WorkEndDate" Type="DateTime" Precision="0" />
+          <Property Name="Qualification" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PassingYear" Type="DateTime" Precision="0" />
+          <Property Name="University" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="BankAccountNo" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="BankName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IFSCCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="ESIPFNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PanNumber" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="AdharNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ManagerID" Type="Int32" />
+          <Property Name="is_active" Type="Boolean" />
+          <Property Name="mobilenumber" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="AlternateNumber" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="cv_path" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="addressproof_path" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="sch_department" Relationship="SchoolOrbitModel.FK_sch_employee_sch_department" FromRole="sch_employee" ToRole="sch_department" />
+          <NavigationProperty Name="sys_school" Relationship="SchoolOrbitModel.FK_sch_employee_sys_school" FromRole="sch_employee" ToRole="sys_school" />
+        </EntityType>
+        <Association Name="FK_sch_employee_sch_department">
+          <End Type="SchoolOrbitModel.sch_department" Role="sch_department" Multiplicity="0..1" />
+          <End Type="SchoolOrbitModel.sch_employee" Role="sch_employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sch_department">
+              <PropertyRef Name="idDepartment" />
+            </Principal>
+            <Dependent Role="sch_employee">
+              <PropertyRef Name="idDepartment" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_sch_employee_sys_school">
+          <End Type="SchoolOrbitModel.sys_school" Role="sys_school" Multiplicity="1" />
+          <End Type="SchoolOrbitModel.sch_employee" Role="sch_employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sys_school">
+              <PropertyRef Name="idSchool" />
+            </Principal>
+            <Dependent Role="sch_employee">
+              <PropertyRef Name="idSchool" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="fn_expense_rpt_month_view_Result">
+          <Property Type="String" Name="MonthName" Nullable="true" MaxLength="30" />
+          <Property Type="Decimal" Name="Amount" Nullable="false" Precision="19" Scale="4" />
+        </ComplexType>
+        <EntityType Name="sch_fee_discount">
+          <Key>
+            <PropertyRef Name="idDiscount" />
+          </Key>
+          <Property Name="idSchool" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="idDiscount" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="sch_program_batch_student" Relationship="SchoolOrbitModel.FK_sch_program_batch_student_sch_fee_discount" FromRole="sch_fee_discount" ToRole="sch_program_batch_student" />
+        </EntityType>
+        <EntityType Name="sch_fee_payment_plan">
+          <Key>
+            <PropertyRef Name="idFeePaymentPlan" />
+          </Key>
+          <Property Name="idFeePaymentPlan" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idSchool" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="installments" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="sch_program_batch_student" Relationship="SchoolOrbitModel.FK_sch_program_batch_student_sch_fee_term" FromRole="sch_fee_payment_plan" ToRole="sch_program_batch_student" />
+        </EntityType>
+        <EntityType Name="sch_program_batch_fee">
+          <Key>
+            <PropertyRef Name="idBatch" />
+            <PropertyRef Name="idFeeType" />
+            <PropertyRef Name="idAcademicYear" />
+          </Key>
+          <Property Name="idBatch" Type="Int32" Nullable="false" />
+          <Property Name="idFeeType" Type="Int32" Nullable="false" />
+          <Property Name="fee" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="idAcademicYear" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="sch_fee_type" Relationship="SchoolOrbitModel.FK_sch_program_batch_fee_sch_fee_type" FromRole="sch_program_batch_fee" ToRole="sch_fee_type" />
+          <NavigationProperty Name="sch_program_batch" Relationship="SchoolOrbitModel.FK_sch_program_batch_fee_sch_program_batch" FromRole="sch_program_batch_fee" ToRole="sch_program_batch" />
+          <NavigationProperty Name="sys_academic_year" Relationship="SchoolOrbitModel.FK_sch_program_batch_fee_sys_academic_year" FromRole="sch_program_batch_fee" ToRole="sys_academic_year" />
+        </EntityType>
+        <EntityType Name="sch_program_batch_student">
+          <Key>
+            <PropertyRef Name="idBatch" />
+            <PropertyRef Name="idUser" />
+          </Key>
+          <Property Name="idBatch" Type="Int32" Nullable="false" />
+          <Property Name="idUser" Type="Int32" Nullable="false" />
+          <Property Name="idSection" Type="Int32" Nullable="false" />
+          <Property Name="idFeePaymentPlan" Type="Int32" />
+          <Property Name="idDiscount" Type="Int32" />
+          <NavigationProperty Name="sch_fee_discount" Relationship="SchoolOrbitModel.FK_sch_program_batch_student_sch_fee_discount" FromRole="sch_program_batch_student" ToRole="sch_fee_discount" />
+          <NavigationProperty Name="sch_fee_payment_plan" Relationship="SchoolOrbitModel.FK_sch_program_batch_student_sch_fee_term" FromRole="sch_program_batch_student" ToRole="sch_fee_payment_plan" />
+          <NavigationProperty Name="sch_program_batch" Relationship="SchoolOrbitModel.FK_sch_program_batch_student_sch_program_batch" FromRole="sch_program_batch_student" ToRole="sch_program_batch" />
+          <NavigationProperty Name="sch_program_section" Relationship="SchoolOrbitModel.FK_sch_program_batch_student_sch_program_section" FromRole="sch_program_batch_student" ToRole="sch_program_section" />
+        </EntityType>
+        <EntityType Name="sch_program_section">
+          <Key>
+            <PropertyRef Name="idSection" />
+          </Key>
+          <Property Name="idSection" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idSchool" Type="Int32" Nullable="false" />
+          <Property Name="idProgram" Type="Int32" Nullable="false" />
+          <Property Name="section" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="idBuilding" Type="Int32" />
+          <Property Name="room" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="capacity" Type="Int32" />
+          <NavigationProperty Name="sch_program_batch_student" Relationship="SchoolOrbitModel.FK_sch_program_batch_student_sch_program_section" FromRole="sch_program_section" ToRole="sch_program_batch_student" />
+          <NavigationProperty Name="sys_program" Relationship="SchoolOrbitModel.FK_sch_program_section_sys_program" FromRole="sch_program_section" ToRole="sys_program" />
+          <NavigationProperty Name="sys_school" Relationship="SchoolOrbitModel.FK_sch_program_section_sys_school" FromRole="sch_program_section" ToRole="sys_school" />
+        </EntityType>
+        <EntityType Name="sys_academic_year">
+          <Key>
+            <PropertyRef Name="idAcademicYear" />
+          </Key>
+          <Property Name="idAcademicYear" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="sch_program_batch_fee" Relationship="SchoolOrbitModel.FK_sch_program_batch_fee_sys_academic_year" FromRole="sys_academic_year" ToRole="sch_program_batch_fee" />
+        </EntityType>
+        <EntityType Name="sys_program">
+          <Key>
+            <PropertyRef Name="idProgram" />
+          </Key>
+          <Property Name="idProgram" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="duration" Type="Int32" />
+          <Property Name="idProgramType" Type="Int32" Nullable="false" />
+          <Property Name="idProgramModel" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="sch_program_batch" Relationship="SchoolOrbitModel.FK_sch_program_batch_sys_program" FromRole="sys_program" ToRole="sch_program_batch" />
+          <NavigationProperty Name="sch_program_section" Relationship="SchoolOrbitModel.FK_sch_program_section_sys_program" FromRole="sys_program" ToRole="sch_program_section" />
+          <NavigationProperty Name="sys_program_model" Relationship="SchoolOrbitModel.FK_sys_program_sys_program_model" FromRole="sys_program" ToRole="sys_program_model" />
+          <NavigationProperty Name="sys_program_type" Relationship="SchoolOrbitModel.FK_sys_program_sys_program_type" FromRole="sys_program" ToRole="sys_program_type" />
+          <NavigationProperty Name="sys_program_type1" Relationship="SchoolOrbitModel.FK_sys_program_sys_program_type1" FromRole="sys_program" ToRole="sys_program_type" />
+        </EntityType>
+        <EntityType Name="sch_fee_schedule">
+          <Key>
+            <PropertyRef Name="idSchool" />
+          </Key>
+          <Property Name="idSchool" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_sch_program_batch_student_sch_fee_discount">
+          <End Type="SchoolOrbitModel.sch_fee_discount" Role="sch_fee_discount" Multiplicity="0..1" />
+          <End Type="SchoolOrbitModel.sch_program_batch_student" Role="sch_program_batch_student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sch_fee_discount">
+              <PropertyRef Name="idDiscount" />
+            </Principal>
+            <Dependent Role="sch_program_batch_student">
+              <PropertyRef Name="idDiscount" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_sch_program_batch_student_sch_fee_term">
+          <End Type="SchoolOrbitModel.sch_fee_payment_plan" Role="sch_fee_payment_plan" Multiplicity="0..1" />
+          <End Type="SchoolOrbitModel.sch_program_batch_student" Role="sch_program_batch_student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sch_fee_payment_plan">
+              <PropertyRef Name="idFeePaymentPlan" />
+            </Principal>
+            <Dependent Role="sch_program_batch_student">
+              <PropertyRef Name="idFeePaymentPlan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_sch_program_batch_fee_sch_fee_type">
+          <End Type="SchoolOrbitModel.sch_fee_type" Role="sch_fee_type" Multiplicity="1" />
+          <End Type="SchoolOrbitModel.sch_program_batch_fee" Role="sch_program_batch_fee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sch_fee_type">
+              <PropertyRef Name="idFeeType" />
+            </Principal>
+            <Dependent Role="sch_program_batch_fee">
+              <PropertyRef Name="idFeeType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_sch_program_batch_fee_sch_program_batch">
+          <End Type="SchoolOrbitModel.sch_program_batch" Role="sch_program_batch" Multiplicity="1" />
+          <End Type="SchoolOrbitModel.sch_program_batch_fee" Role="sch_program_batch_fee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sch_program_batch">
+              <PropertyRef Name="idBatch" />
+            </Principal>
+            <Dependent Role="sch_program_batch_fee">
+              <PropertyRef Name="idBatch" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_sch_program_batch_student_sch_program_batch">
+          <End Type="SchoolOrbitModel.sch_program_batch" Role="sch_program_batch" Multiplicity="1" />
+          <End Type="SchoolOrbitModel.sch_program_batch_student" Role="sch_program_batch_student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sch_program_batch">
+              <PropertyRef Name="idBatch" />
+            </Principal>
+            <Dependent Role="sch_program_batch_student">
+              <PropertyRef Name="idBatch" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_sch_program_batch_sys_program">
+          <End Type="SchoolOrbitModel.sys_program" Role="sys_program" Multiplicity="1" />
+          <End Type="SchoolOrbitModel.sch_program_batch" Role="sch_program_batch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sys_program">
+              <PropertyRef Name="idProgram" />
+            </Principal>
+            <Dependent Role="sch_program_batch">
+              <PropertyRef Name="idProgram" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_sch_program_batch_fee_sys_academic_year">
+          <End Type="SchoolOrbitModel.sys_academic_year" Role="sys_academic_year" Multiplicity="1" />
+          <End Type="SchoolOrbitModel.sch_program_batch_fee" Role="sch_program_batch_fee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sys_academic_year">
+              <PropertyRef Name="idAcademicYear" />
+            </Principal>
+            <Dependent Role="sch_program_batch_fee">
+              <PropertyRef Name="idAcademicYear" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_sch_program_batch_student_sch_program_section">
+          <End Type="SchoolOrbitModel.sch_program_section" Role="sch_program_section" Multiplicity="1" />
+          <End Type="SchoolOrbitModel.sch_program_batch_student" Role="sch_program_batch_student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sch_program_section">
+              <PropertyRef Name="idSection" />
+            </Principal>
+            <Dependent Role="sch_program_batch_student">
+              <PropertyRef Name="idSection" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_sch_program_section_sys_program">
+          <End Type="SchoolOrbitModel.sys_program" Role="sys_program" Multiplicity="1" />
+          <End Type="SchoolOrbitModel.sch_program_section" Role="sch_program_section" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sys_program">
+              <PropertyRef Name="idProgram" />
+            </Principal>
+            <Dependent Role="sch_program_section">
+              <PropertyRef Name="idProgram" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_sch_program_section_sys_school">
+          <End Type="SchoolOrbitModel.sys_school" Role="sys_school" Multiplicity="1" />
+          <End Type="SchoolOrbitModel.sch_program_section" Role="sch_program_section" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sys_school">
+              <PropertyRef Name="idSchool" />
+            </Principal>
+            <Dependent Role="sch_program_section">
+              <PropertyRef Name="idSchool" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_sys_program_sys_program_model">
+          <End Type="SchoolOrbitModel.sys_program_model" Role="sys_program_model" Multiplicity="1" />
+          <End Type="SchoolOrbitModel.sys_program" Role="sys_program" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sys_program_model">
+              <PropertyRef Name="idProgramModel" />
+            </Principal>
+            <Dependent Role="sys_program">
+              <PropertyRef Name="idProgramModel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_sys_program_sys_program_type">
+          <End Type="SchoolOrbitModel.sys_program_type" Role="sys_program_type" Multiplicity="1" />
+          <End Type="SchoolOrbitModel.sys_program" Role="sys_program" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sys_program_type">
+              <PropertyRef Name="idProgramType" />
+            </Principal>
+            <Dependent Role="sys_program">
+              <PropertyRef Name="idProgramType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_sys_program_sys_program_type1">
+          <End Type="SchoolOrbitModel.sys_program_type" Role="sys_program_type" Multiplicity="1" />
+          <End Type="SchoolOrbitModel.sys_program" Role="sys_program" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sys_program_type">
+              <PropertyRef Name="idProgramType" />
+            </Principal>
+            <Dependent Role="sys_program">
+              <PropertyRef Name="idProgramType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="sys_roles">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="role_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="sch_user_roles">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idSchool" Type="Int32" Nullable="false" />
+          <Property Name="idUser" Type="Int32" Nullable="false" />
+          <Property Name="idRole" Type="Int32" Nullable="false" />
+          <Property Name="isactive" Type="Boolean" Nullable="false" />
+          <Property Name="entered_by" Type="Int32" Nullable="false" />
+          <Property Name="ts_entered" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="last_updated_by" Type="Int32" Nullable="false" />
+          <Property Name="ts_updated" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="vew_user_roles">
+          <Key>
+            <PropertyRef Name="iduser" />
+            <PropertyRef Name="idschool" />
+            <PropertyRef Name="idrole" />
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="iduser" Type="Int32" Nullable="false" />
+          <Property Name="idschool" Type="Int32" Nullable="false" />
+          <Property Name="displayname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="idrole" Type="Int32" Nullable="false" />
+          <Property Name="role_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="id" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_sch_parent_sys_user">
+          <End Type="SchoolOrbitModel.sys_user" Role="sys_user" Multiplicity="1" />
+          <End Type="SchoolOrbitModel.sch_parent" Role="sch_parent" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="sys_user">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="sch_parent">
+              <PropertyRef Name="idUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_sch_student_sys_user">
+          <End Type="SchoolOrbitModel.sys_user" Role="sys_user" Multiplicity="1" />
+          <End Type="SchoolOrbitModel.sch_student" Role="sch_student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sys_user">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="sch_student">
+              <PropertyRef Name="idUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SchoolOrbitModelStoreContainer" CdmEntityContainer="SchoolOrbitEntities">
+          <EntitySetMapping Name="AspNetRoles">
+            <EntityTypeMapping TypeName="SchoolOrbitModel.AspNetRole">
+              <MappingFragment StoreEntitySet="AspNetRoles">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserClaims">
+            <EntityTypeMapping TypeName="SchoolOrbitModel.AspNetUserClaim">
+              <MappingFragment StoreEntitySet="AspNetUserClaims">
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserLogins">
+            <EntityTypeMapping TypeName="SchoolOrbitModel.AspNetUserLogin">
+              <MappingFragment StoreEntitySet="AspNetUserLogins">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="SchoolOrbitModel.AspNetUser">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Displayname" ColumnName="Displayname" />
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sch_department">
+            <EntityTypeMapping TypeName="SchoolOrbitModel.sch_department">
+              <MappingFragment StoreEntitySet="sch_department">
+                <ScalarProperty Name="department_name" ColumnName="department_name" />
+                <ScalarProperty Name="idSchool" ColumnName="idSchool" />
+                <ScalarProperty Name="idDepartment" ColumnName="idDepartment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sch_employee_docs">
+            <EntityTypeMapping TypeName="SchoolOrbitModel.sch_employee_docs">
+              <MappingFragment StoreEntitySet="sch_employee_docs">
+                <ScalarProperty Name="doc_name" ColumnName="doc_name" />
+                <ScalarProperty Name="employee_number" ColumnName="employee_number" />
+                <ScalarProperty Name="idUser" ColumnName="idUser" />
+                <ScalarProperty Name="idSchool" ColumnName="idSchool" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sch_fee_term">
+            <EntityTypeMapping TypeName="SchoolOrbitModel.sch_fee_term">
+              <MappingFragment StoreEntitySet="sch_fee_term">
+                <ScalarProperty Name="date_end" ColumnName="date_end" />
+                <ScalarProperty Name="date_start" ColumnName="date_start" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="idSchool" ColumnName="idSchool" />
+                <ScalarProperty Name="idFeeTerm" ColumnName="idFeeTerm" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sch_fee_type">
+            <EntityTypeMapping TypeName="SchoolOrbitModel.sch_fee_type">
+              <MappingFragment StoreEntitySet="sch_fee_type">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="idSchool" ColumnName="idSchool" />
+                <ScalarProperty Name="idFeeType" ColumnName="idFeeType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sch_parent">
+            <EntityTypeMapping TypeName="SchoolOrbitModel.sch_parent">
+              <MappingFragment StoreEntitySet="sch_parent">
+                <ScalarProperty Name="ts_updated" ColumnName="ts_updated" />
+                <ScalarProperty Name="ts_entered" ColumnName="ts_entered" />
+                <ScalarProperty Name="mother_occupation" ColumnName="mother_occupation" />
+                <ScalarProperty Name="mother_email" ColumnName="mother_email" />
+                <ScalarProperty Name="mother_phone_no" ColumnName="mother_phone_no" />
+                <ScalarProperty Name="mother_name" ColumnName="mother_name" />
+                <ScalarProperty Name="father_guardian_occupation" ColumnName="father_guardian_occupation" />
+                <ScalarProperty Name="father_guardian_email" ColumnName="father_guardian_email" />
+                <ScalarProperty Name="father_guardian_phone_no" ColumnName="father_guardian_phone_no" />
+                <ScalarProperty Name="father_guardian_name" ColumnName="father_guardian_name" />
+                <ScalarProperty Name="idUser" ColumnName="idUser" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sch_program_batch">
+            <EntityTypeMapping TypeName="SchoolOrbitModel.sch_program_batch">
+              <MappingFragment StoreEntitySet="sch_program_batch">
+                <ScalarProperty Name="year" ColumnName="year" />
+                <ScalarProperty Name="is_active" ColumnName="is_active" />
+                <ScalarProperty Name="date_end" ColumnName="date_end" />
+                <ScalarProperty Name="date_start" ColumnName="date_start" />
+                <ScalarProperty Name="idProgram" ColumnName="idProgram" />
+                <ScalarProperty Name="idSchool" ColumnName="idSchool" />
+                <ScalarProperty Name="idBatch" ColumnName="idBatch" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sch_student">
+            <EntityTypeMapping TypeName="SchoolOrbitModel.sch_student">
+              <MappingFragment StoreEntitySet="sch_student">
+                <ScalarProperty Name="idParent" ColumnName="idParent" />
+                <ScalarProperty Name="ts_updated" ColumnName="ts_updated" />
+                <ScalarProperty Name="ts_entered" ColumnName="ts_entered" />
+                <ScalarProperty Name="is_active" ColumnName="is_active" />
+                <ScalarProperty Name="transfer_date" ColumnName="transfer_date" />
+                <ScalarProperty Name="admission_date" ColumnName="admission_date" />
+                <ScalarProperty Name="admission_number" ColumnName="admission_number" />
+                <ScalarProperty Name="idUser" ColumnName="idUser" />
+                <ScalarProperty Name="idSchool" ColumnName="idSchool" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sch_teacher">
+            <EntityTypeMapping TypeName="SchoolOrbitModel.sch_teacher">
+              <MappingFragment StoreEntitySet="sch_teacher">
+                <ScalarProperty Name="idSubject" ColumnName="idSubject" />
+                <ScalarProperty Name="idUser" ColumnName="idUser" />
+                <ScalarProperty Name="idSchool" ColumnName="idSchool" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sys_business">
+            <EntityTypeMapping TypeName="SchoolOrbitModel.sys_business">
+              <MappingFragment StoreEntitySet="sys_business">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="ts_updated" ColumnName="ts_updated" />
+                <ScalarProperty Name="ts_entered" ColumnName="ts_entered" />
+                <ScalarProperty Name="idBusiness" ColumnName="idBusiness" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sys_country">
+            <EntityTypeMapping TypeName="SchoolOrbitModel.sys_country">
+              <MappingFragment StoreEntitySet="sys_country">
+                <ScalarProperty Name="country_name" ColumnName="country_name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sys_program_model">
+            <EntityTypeMapping TypeName="SchoolOrbitModel.sys_program_model">
+              <MappingFragment StoreEntitySet="sys_program_model">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="idProgramModel" ColumnName="idProgramModel" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sys_program_type">
+            <EntityTypeMapping TypeName="SchoolOrbitModel.sys_program_type">
+              <MappingFragment StoreEntitySet="sys_program_type">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="idProgramType" ColumnName="idProgramType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sys_school">
+            <EntityTypeMapping TypeName="SchoolOrbitModel.sys_school">
+              <MappingFragment StoreEntitySet="sys_school">
+                <ScalarProperty Name="school_name" ColumnName="school_name" />
+                <ScalarProperty Name="idBusiness" ColumnName="idBusiness" />
+                <ScalarProperty Name="ts_updated" ColumnName="ts_updated" />
+                <ScalarProperty Name="ts_entered" ColumnName="ts_entered" />
+                <ScalarProperty Name="idSchool" ColumnName="idSchool" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sys_states">
+            <EntityTypeMapping TypeName="SchoolOrbitModel.sys_states">
+              <MappingFragment StoreEntitySet="sys_states">
+                <ScalarProperty Name="state_name" ColumnName="state_name" />
+                <ScalarProperty Name="country_id" ColumnName="country_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sys_user">
+            <EntityTypeMapping TypeName="SchoolOrbitModel.sys_user">
+              <MappingFragment StoreEntitySet="sys_user">
+                <ScalarProperty Name="contact_number_alternate" ColumnName="contact_number_alternate" />
+                <ScalarProperty Name="contact_number" ColumnName="contact_number" />
+                <ScalarProperty Name="aadhaar_number" ColumnName="aadhaar_number" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="active" ColumnName="active" />
+                <ScalarProperty Name="blood_group" ColumnName="blood_group" />
+                <ScalarProperty Name="allergic" ColumnName="allergic" />
+                <ScalarProperty Name="paediatrician_details" ColumnName="paediatrician_details" />
+                <ScalarProperty Name="present_zip_code" ColumnName="present_zip_code" />
+                <ScalarProperty Name="present_country" ColumnName="present_country" />
+                <ScalarProperty Name="present_state" ColumnName="present_state" />
+                <ScalarProperty Name="present_city" ColumnName="present_city" />
+                <ScalarProperty Name="present_address" ColumnName="present_address" />
+                <ScalarProperty Name="permanent_zip_code" ColumnName="permanent_zip_code" />
+                <ScalarProperty Name="permanent_country" ColumnName="permanent_country" />
+                <ScalarProperty Name="permanent_state" ColumnName="permanent_state" />
+                <ScalarProperty Name="permanent_city" ColumnName="permanent_city" />
+                <ScalarProperty Name="permanent_address" ColumnName="permanent_address" />
+                <ScalarProperty Name="photo_url" ColumnName="photo_url" />
+                <ScalarProperty Name="screen_name" ColumnName="screen_name" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="gender" ColumnName="gender" />
+                <ScalarProperty Name="last_name" ColumnName="last_name" />
+                <ScalarProperty Name="middle_name" ColumnName="middle_name" />
+                <ScalarProperty Name="first_name" ColumnName="first_name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="AspNetUserRoles" TypeName="SchoolOrbitModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+            <EndProperty Name="AspNetUser">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+            <EndProperty Name="AspNetRole">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <EntitySetMapping Name="sch_expense_type">
+            <EntityTypeMapping TypeName="SchoolOrbitModel.sch_expense_type">
+              <MappingFragment StoreEntitySet="sch_expense_type">
+                <ScalarProperty Name="entered_by" ColumnName="entered_by" />
+                <ScalarProperty Name="last_updated_by" ColumnName="last_updated_by" />
+                <ScalarProperty Name="ts_updated" ColumnName="ts_updated" />
+                <ScalarProperty Name="ts_entered" ColumnName="ts_entered" />
+                <ScalarProperty Name="isactive" ColumnName="isactive" />
+                <ScalarProperty Name="expense_type" ColumnName="expense_type" />
+                <ScalarProperty Name="idSchool" ColumnName="idSchool" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="fn_sch_expense_consol_month_view" FunctionName="SchoolOrbitModel.Store.fn_sch_expense_consol_month_view">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SchoolOrbitModel.fn_sch_expense_consol_month_view_Result">
+                <ScalarProperty Name="Expenses" ColumnName="Expenses" />
+                <ScalarProperty Name="Jan" ColumnName="Jan" />
+                <ScalarProperty Name="Feb" ColumnName="Feb" />
+                <ScalarProperty Name="Mar" ColumnName="Mar" />
+                <ScalarProperty Name="Apr" ColumnName="Apr" />
+                <ScalarProperty Name="May" ColumnName="May" />
+                <ScalarProperty Name="Jun" ColumnName="Jun" />
+                <ScalarProperty Name="Jul" ColumnName="Jul" />
+                <ScalarProperty Name="Aug" ColumnName="Aug" />
+                <ScalarProperty Name="Sep" ColumnName="Sep" />
+                <ScalarProperty Name="Oct" ColumnName="Oct" />
+                <ScalarProperty Name="Nov" ColumnName="Nov" />
+                <ScalarProperty Name="Dec" ColumnName="Dec" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="fn_sch_expense_type_month_view" FunctionName="SchoolOrbitModel.Store.fn_sch_expense_type_month_view">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SchoolOrbitModel.fn_sch_expense_type_month_view_Result">
+                <ScalarProperty Name="Expense_Type" ColumnName="Expense Type" />
+                <ScalarProperty Name="Jan" ColumnName="Jan" />
+                <ScalarProperty Name="Feb" ColumnName="Feb" />
+                <ScalarProperty Name="Mar" ColumnName="Mar" />
+                <ScalarProperty Name="Apr" ColumnName="Apr" />
+                <ScalarProperty Name="May" ColumnName="May" />
+                <ScalarProperty Name="Jun" ColumnName="Jun" />
+                <ScalarProperty Name="Jul" ColumnName="Jul" />
+                <ScalarProperty Name="Aug" ColumnName="Aug" />
+                <ScalarProperty Name="Sep" ColumnName="Sep" />
+                <ScalarProperty Name="Oct" ColumnName="Oct" />
+                <ScalarProperty Name="Nov" ColumnName="Nov" />
+                <ScalarProperty Name="Dec" ColumnName="Dec" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="sch_expense_attachment">
+            <EntityTypeMapping TypeName="SchoolOrbitModel.sch_expense_attachment">
+              <MappingFragment StoreEntitySet="sch_expense_attachment">
+                <ScalarProperty Name="vocher" ColumnName="vocher" />
+                <ScalarProperty Name="entered_by" ColumnName="entered_by" />
+                <ScalarProperty Name="last_updated_by" ColumnName="last_updated_by" />
+                <ScalarProperty Name="ts_updated" ColumnName="ts_updated" />
+                <ScalarProperty Name="ts_entered" ColumnName="ts_entered" />
+                <ScalarProperty Name="isactive" ColumnName="isactive" />
+                <ScalarProperty Name="idexpense_trans" ColumnName="idexpense_trans" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sch_expense_trans">
+            <EntityTypeMapping TypeName="SchoolOrbitModel.sch_expense_trans">
+              <MappingFragment StoreEntitySet="sch_expense_trans">
+                <ScalarProperty Name="isdeleted" ColumnName="isdeleted" />
+                <ScalarProperty Name="issue_bank" ColumnName="issue_bank" />
+                <ScalarProperty Name="cheque_dd_no" ColumnName="cheque_dd_no" />
+                <ScalarProperty Name="mode_of_payment" ColumnName="mode_of_payment" />
+                <ScalarProperty Name="idExpensestatus" ColumnName="idExpensestatus" />
+                <ScalarProperty Name="entered_by" ColumnName="entered_by" />
+                <ScalarProperty Name="last_updated_by" ColumnName="last_updated_by" />
+                <ScalarProperty Name="ts_updated" ColumnName="ts_updated" />
+                <ScalarProperty Name="ts_entered" ColumnName="ts_entered" />
+                <ScalarProperty Name="approved_remarks" ColumnName="approved_remarks" />
+                <ScalarProperty Name="approved_dt" ColumnName="approved_dt" />
+                <ScalarProperty Name="approved_by" ColumnName="approved_by" />
+                <ScalarProperty Name="remarks" ColumnName="remarks" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="expense_date" ColumnName="expense_date" />
+                <ScalarProperty Name="expense_type_id" ColumnName="expense_type_id" />
+                <ScalarProperty Name="idSchool" ColumnName="idSchool" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sch_employee">
+            <EntityTypeMapping TypeName="SchoolOrbitModel.sch_employee">
+              <MappingFragment StoreEntitySet="sch_employee">
+                <ScalarProperty Name="addressproof_path" ColumnName="addressproof_path" />
+                <ScalarProperty Name="cv_path" ColumnName="cv_path" />
+                <ScalarProperty Name="AlternateNumber" ColumnName="AlternateNumber" />
+                <ScalarProperty Name="mobilenumber" ColumnName="mobilenumber" />
+                <ScalarProperty Name="is_active" ColumnName="is_active" />
+                <ScalarProperty Name="ManagerID" ColumnName="ManagerID" />
+                <ScalarProperty Name="AdharNumber" ColumnName="AdharNumber" />
+                <ScalarProperty Name="PanNumber" ColumnName="PanNumber" />
+                <ScalarProperty Name="ESIPFNumber" ColumnName="ESIPFNumber" />
+                <ScalarProperty Name="IFSCCode" ColumnName="IFSCCode" />
+                <ScalarProperty Name="BankName" ColumnName="BankName" />
+                <ScalarProperty Name="BankAccountNo" ColumnName="BankAccountNo" />
+                <ScalarProperty Name="University" ColumnName="University" />
+                <ScalarProperty Name="PassingYear" ColumnName="PassingYear" />
+                <ScalarProperty Name="Qualification" ColumnName="Qualification" />
+                <ScalarProperty Name="WorkEndDate" ColumnName="WorkEndDate" />
+                <ScalarProperty Name="WorkStartDate" ColumnName="WorkStartDate" />
+                <ScalarProperty Name="designation" ColumnName="designation" />
+                <ScalarProperty Name="idDepartment" ColumnName="idDepartment" />
+                <ScalarProperty Name="employee_number" ColumnName="employee_number" />
+                <ScalarProperty Name="idUser" ColumnName="idUser" />
+                <ScalarProperty Name="idSchool" ColumnName="idSchool" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="fn_expense_rpt_month_view" FunctionName="SchoolOrbitModel.Store.fn_expense_rpt_month_view">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SchoolOrbitModel.fn_expense_rpt_month_view_Result">
+                <ScalarProperty Name="MonthName" ColumnName="MonthName" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="sch_fee_discount">
+            <EntityTypeMapping TypeName="SchoolOrbitModel.sch_fee_discount">
+              <MappingFragment StoreEntitySet="sch_fee_discount">
+                <ScalarProperty Name="idDiscount" ColumnName="idDiscount" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="idSchool" ColumnName="idSchool" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sch_fee_payment_plan">
+            <EntityTypeMapping TypeName="SchoolOrbitModel.sch_fee_payment_plan">
+              <MappingFragment StoreEntitySet="sch_fee_payment_plan">
+                <ScalarProperty Name="installments" ColumnName="installments" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="idSchool" ColumnName="idSchool" />
+                <ScalarProperty Name="idFeePaymentPlan" ColumnName="idFeePaymentPlan" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sch_program_batch_fee">
+            <EntityTypeMapping TypeName="SchoolOrbitModel.sch_program_batch_fee">
+              <MappingFragment StoreEntitySet="sch_program_batch_fee">
+                <ScalarProperty Name="idAcademicYear" ColumnName="idAcademicYear" />
+                <ScalarProperty Name="fee" ColumnName="fee" />
+                <ScalarProperty Name="idFeeType" ColumnName="idFeeType" />
+                <ScalarProperty Name="idBatch" ColumnName="idBatch" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sch_program_batch_student">
+            <EntityTypeMapping TypeName="SchoolOrbitModel.sch_program_batch_student">
+              <MappingFragment StoreEntitySet="sch_program_batch_student">
+                <ScalarProperty Name="idDiscount" ColumnName="idDiscount" />
+                <ScalarProperty Name="idFeePaymentPlan" ColumnName="idFeePaymentPlan" />
+                <ScalarProperty Name="idSection" ColumnName="idSection" />
+                <ScalarProperty Name="idUser" ColumnName="idUser" />
+                <ScalarProperty Name="idBatch" ColumnName="idBatch" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sch_program_section">
+            <EntityTypeMapping TypeName="SchoolOrbitModel.sch_program_section">
+              <MappingFragment StoreEntitySet="sch_program_section">
+                <ScalarProperty Name="capacity" ColumnName="capacity" />
+                <ScalarProperty Name="room" ColumnName="room" />
+                <ScalarProperty Name="idBuilding" ColumnName="idBuilding" />
+                <ScalarProperty Name="section" ColumnName="section" />
+                <ScalarProperty Name="idProgram" ColumnName="idProgram" />
+                <ScalarProperty Name="idSchool" ColumnName="idSchool" />
+                <ScalarProperty Name="idSection" ColumnName="idSection" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sys_academic_year">
+            <EntityTypeMapping TypeName="SchoolOrbitModel.sys_academic_year">
+              <MappingFragment StoreEntitySet="sys_academic_year">
+                <ScalarProperty Name="idAcademicYear" ColumnName="idAcademicYear" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sys_program">
+            <EntityTypeMapping TypeName="SchoolOrbitModel.sys_program">
+              <MappingFragment StoreEntitySet="sys_program">
+                <ScalarProperty Name="idProgramModel" ColumnName="idProgramModel" />
+                <ScalarProperty Name="idProgramType" ColumnName="idProgramType" />
+                <ScalarProperty Name="duration" ColumnName="duration" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="idProgram" ColumnName="idProgram" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sch_fee_schedule">
+            <EntityTypeMapping TypeName="SchoolOrbitModel.sch_fee_schedule">
+              <MappingFragment StoreEntitySet="sch_fee_schedule">
+                <ScalarProperty Name="idSchool" ColumnName="idSchool" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sys_roles">
+            <EntityTypeMapping TypeName="SchoolOrbitModel.sys_roles">
+              <MappingFragment StoreEntitySet="sys_roles">
+                <ScalarProperty Name="role_name" ColumnName="role_name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sch_user_roles">
+            <EntityTypeMapping TypeName="SchoolOrbitModel.sch_user_roles">
+              <MappingFragment StoreEntitySet="sch_user_roles">
+                <ScalarProperty Name="ts_updated" ColumnName="ts_updated" />
+                <ScalarProperty Name="last_updated_by" ColumnName="last_updated_by" />
+                <ScalarProperty Name="ts_entered" ColumnName="ts_entered" />
+                <ScalarProperty Name="entered_by" ColumnName="entered_by" />
+                <ScalarProperty Name="isactive" ColumnName="isactive" />
+                <ScalarProperty Name="idRole" ColumnName="idRole" />
+                <ScalarProperty Name="idUser" ColumnName="idUser" />
+                <ScalarProperty Name="idSchool" ColumnName="idSchool" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vew_user_roles">
+            <EntityTypeMapping TypeName="SchoolOrbitModel.vew_user_roles">
+              <MappingFragment StoreEntitySet="vew_user_roles">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="role_name" ColumnName="role_name" />
+                <ScalarProperty Name="idrole" ColumnName="idrole" />
+                <ScalarProperty Name="displayname" ColumnName="displayname" />
+                <ScalarProperty Name="idschool" ColumnName="idschool" />
+                <ScalarProperty Name="iduser" ColumnName="iduser" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

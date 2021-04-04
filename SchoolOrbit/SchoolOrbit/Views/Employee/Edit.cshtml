@@ -1,0 +1,639 @@
+﻿@model DomainModel.BusinessLayer.Employee
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<section class="content-header">
+    <h1>
+        Edit Employee
+        <small></small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-users"></i>Employee</a></li>
+        <li class="active">Edit</li>
+    </ol>
+</section>
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data", id = "exp-upload-emp" }))
+{
+    @Html.AntiForgeryToken()
+
+    <section class="content">
+        <div class="box">
+            <div class="box-header with-border">
+                <div class="box-body">
+                    <div class="row">
+                        
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            @Html.HiddenFor(model => model.Id)
+                            @Html.HiddenFor(model => model.photo_url)
+                            <div class="nav-tabs-custom">
+                                <ul class="nav nav-tabs">
+                                    <li id="tab_personal" class="active"><a href="#tab_1" data-toggle="tab">Personal Information</a></li>
+                                    <li id="tab_work"><a href="#tab_2" data-toggle="tab">Work Details</a></li>
+                                    <li id="tab_bank"><a href="#tab_3" data-toggle="tab">Bank Details</a></li>
+                                    <li id="tab_contact"><a href="#tab_4" data-toggle="tab">Contact Details</a></li>
+                                    <li id="tab_misc"><a href="#tab_5" data-toggle="tab">Miscellaneous Details</a></li>
+                                    <li id="tab_attachment"><a href="#tab_6" data-toggle="tab">Attachment</a></li> 
+                                </ul>
+                                <div class="tab-content">
+                                    <div class="tab-pane active" id="tab_1">
+                                        <div class="col-md-7">
+                                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                            <div class="form-group">
+                                                @Html.LabelFor(model => model.first_name, htmlAttributes: new { @class = "control-label " })
+                                                <div>
+                                                    @Html.EditorFor(model => model.first_name, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.first_name, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                @Html.LabelFor(model => model.middle_name, htmlAttributes: new { @class = "control-label " })
+                                                <div>
+                                                    @Html.EditorFor(model => model.middle_name, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.middle_name, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+
+
+                                            <div class="form-group">
+                                                @Html.LabelFor(model => model.last_name, htmlAttributes: new { @class = "control-label " })
+                                                <div>
+                                                    @Html.EditorFor(model => model.last_name, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.last_name, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                @Html.LabelFor(model => model.gender, htmlAttributes: new { @class = "control-label " })
+                                                <div>                                                   
+                                                    @Html.DropDownList("gender", (SelectList)ViewBag.GenderCd)                                                    
+                                                    @* @Html.EditorFor(model => model.gender, new { htmlAttributes = new { @class = "form-control" } })*@
+                                                    @Html.ValidationMessageFor(model => model.gender, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+
+
+                                            <div class="form-group">
+                                                @Html.LabelFor(model => model.DOB, htmlAttributes: new { @class = "control-label " })
+                                                <div>
+                                                    @Html.EditorFor(model => model.DOB, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.DOB, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>                                            
+
+                                            <div class="form-group">
+                                                @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label " })
+                                                <div>
+                                                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                @Html.LabelFor(model => model.mobilenumber, htmlAttributes: new { @class = "control-label  " })
+                                                <div>
+                                                    @Html.EditorFor(model => model.mobilenumber, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.mobilenumber, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                @Html.LabelFor(model => model.AlternateNumber, htmlAttributes: new { @class = "control-label  " })
+                                                <div>
+                                                    @Html.EditorFor(model => model.AlternateNumber, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.AlternateNumber, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>                                            
+                                            <div class="form-group">
+                                                <input type="button" class="btn btn-primary" data-toggle="tab" value="Next" onclick="btnOutside();" aria-expanded="true">
+                                            </div>
+                                        </div>
+                                    </div>                                            
+                                    <div class="tab-pane" id="tab_2">
+                                        <div class="col-md-7">                                           
+
+                                            <div class="form-group">
+                                                @Html.LabelFor(model => model.employee_number, htmlAttributes: new { @class = "control-label   " })
+                                                <div>
+                                                    @Html.EditorFor(model => model.employee_number, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.employee_number, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                @Html.LabelFor(model => model.department_name, htmlAttributes: new { @class = "control-label   " })
+                                                <div>
+                                                    @Html.DropDownList("department_name",(SelectList)ViewBag.DropDownAOOs)                                                   
+                                                    @Html.ValidationMessageFor(model => model.department_name, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+
+
+                                            <div class="form-group">
+                                                @Html.LabelFor(model => model.designation, htmlAttributes: new { @class = "control-label   " })
+                                                <div>
+                                                    @Html.EditorFor(model => model.designation, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.designation, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                @Html.LabelFor(model => model.ManagerID, htmlAttributes: new { @class = "control-label  " })
+                                                <div>
+                                                    @Html.EditorFor(model => model.ManagerID, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.ManagerID, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                @Html.LabelFor(model => model.WorkStartDate, htmlAttributes: new { @class = "control-label   " })
+                                                <div>
+                                                    @Html.EditorFor(model => model.WorkStartDate, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.WorkStartDate, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                @Html.LabelFor(model => model.WorkEndDate, htmlAttributes: new { @class = "control-label  " })
+                                                <div>
+                                                    @Html.EditorFor(model => model.WorkEndDate, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.WorkEndDate, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                @Html.LabelFor(model => model.Qualification, htmlAttributes: new { @class = "control-label  " })
+                                                <div>
+                                                    @Html.EditorFor(model => model.Qualification, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.Qualification, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+
+
+
+                                            <div class="form-group">
+                                                @Html.LabelFor(model => model.PassingYear, htmlAttributes: new { @class = "control-label  " })
+                                                <div>
+                                                    @Html.EditorFor(model => model.PassingYear, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.PassingYear, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                @Html.LabelFor(model => model.University, htmlAttributes: new { @class = "control-label  " })
+                                                <div>
+                                                    @Html.EditorFor(model => model.University, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.University, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+
+                                                <input type="button" class="btn btn-primary" data-toggle="tab" value="Previous" onclick="Next('tab_2','tab_1', 'tab_personal');" aria-expanded="true">
+                                                <input type="button" class="btn btn-primary" data-toggle="tab" value="Next" onclick="Next('tab_2', 'tab_3','tab_bank');" aria-expanded="true">
+                                            </div>
+                                            </div>
+                                        </div>
+                                    <div class="tab-pane" id="tab_3">
+                                        <div class="col-md-7">
+                                            <div class="form-group">
+                                                @Html.LabelFor(model => model.BankAccountNo, htmlAttributes: new { @class = "control-label  " })
+                                                <div>
+                                                    @Html.EditorFor(model => model.BankAccountNo, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.BankAccountNo, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                @Html.LabelFor(model => model.BankName, htmlAttributes: new { @class = "control-label  " })
+                                                <div>
+                                                    @Html.EditorFor(model => model.BankName, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.BankName, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                @Html.LabelFor(model => model.IFSCCode, htmlAttributes: new { @class = "control-label  " })
+                                                <div>
+                                                    @Html.EditorFor(model => model.IFSCCode, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.IFSCCode, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                @Html.LabelFor(model => model.ESIPFNumber, htmlAttributes: new { @class = "control-label  " })
+                                                <div>
+                                                    @Html.EditorFor(model => model.ESIPFNumber, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.ESIPFNumber, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                @Html.LabelFor(model => model.PanNumber, htmlAttributes: new { @class = "control-label  " })
+                                                <div>
+                                                    @Html.EditorFor(model => model.PanNumber, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.PanNumber, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                @Html.LabelFor(model => model.AdharNumber, htmlAttributes: new { @class = "control-label  " })
+                                                <div>
+                                                    @Html.EditorFor(model => model.AdharNumber, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.AdharNumber, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="button" class="btn btn-primary" data-toggle="tab" value="Previous" onclick="Next('tab_3','tab_2', 'tab_work' );" aria-expanded="true">
+                                                <input type="button" class="btn btn-primary" data-toggle="tab" value="Next" onclick="Next('tab_3', 'tab_4', 'tab_contact');" aria-expanded="true">
+                                            </div>
+                                            </div>
+                                     </div>
+                                    <div id="tab_4" class="tab-pane">
+                                        <div class="col-md-7">
+                                            <div class="form-group">
+                                                @Html.LabelFor(model => model.present_address, htmlAttributes: new { @class = "control-label " })
+                                                <div>
+                                                    @Html.EditorFor(model => model.present_address, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.present_address, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                @Html.LabelFor(model => model.present_city, htmlAttributes: new { @class = "control-label " })
+                                                <div>
+                                                    @Html.EditorFor(model => model.present_city, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.present_city, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+
+
+                                            <div class="form-group">
+                                                @Html.LabelFor(model => model.present_state, htmlAttributes: new { @class = "control-label " })
+                                                <div>
+                                                    @Html.DropDownListFor(model => model.present_state, (IEnumerable<SelectListItem>)ViewBag.PresentStates, "", new { htmlAttributes = new { @class = "form-control" } })
+                                                    @*@Html.EditorFor(model => model.present_state, new { htmlAttributes = new { @class = "form-control" } })*@
+                                                    @Html.ValidationMessageFor(model => model.present_state, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                @Html.LabelFor(model => model.present_country, htmlAttributes: new { @class = "control-label " })
+                                                <div>
+                                                    @Html.DropDownListFor(model => model.present_country, (IEnumerable<SelectListItem>)ViewBag.PresentCountry, "", new { htmlAttributes = new { @class = "form-control" } })
+                                                    @*  @Html.EditorFor(model => model.present_country, new { htmlAttributes = new { @class = "form-control" } })*@
+                                                    @Html.ValidationMessageFor(model => model.present_country, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                @Html.LabelFor(model => model.present_zip_code, htmlAttributes: new { @class = "control-label " })
+                                                <div>
+                                                    @Html.EditorFor(model => model.present_zip_code, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.present_zip_code, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                @Html.CheckBox("chkCopyPresentAddr")
+                                                @Html.Label("Same as Present Address")
+                                            </div>
+                                            <h4>Permanent Address</h4>
+
+                                            <div class="form-group">
+                                                @Html.LabelFor(model => model.permanent_address, htmlAttributes: new { @class = "control-label " })
+                                                <div>
+                                                    @Html.EditorFor(model => model.permanent_address, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.permanent_address, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                @Html.LabelFor(model => model.permanent_city, htmlAttributes: new { @class = "control-label " })
+                                                <div>
+                                                    @Html.EditorFor(model => model.permanent_city, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.permanent_city, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                @Html.LabelFor(model => model.permanent_state, htmlAttributes: new { @class = "control-label " })
+                                                <div>
+                                                    @Html.DropDownListFor(model => model.permanent_state, (IEnumerable<SelectListItem>)ViewBag.PermanentStates, "", new { htmlAttributes = new { @class = "form-control" } })
+                                                    @* @Html.EditorFor(model => model.permanent_state, new { htmlAttributes = new { @class = "form-control" } })*@
+                                                    @Html.ValidationMessageFor(model => model.permanent_state, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                @Html.LabelFor(model => model.permanent_country, htmlAttributes: new { @class = "control-label " })
+                                                <div>
+                                                    @Html.DropDownListFor(model => model.permanent_country, (IEnumerable<SelectListItem>)ViewBag.PermanentCountry, "", new { htmlAttributes = new { @class = "form-control" } })
+                                                    @*@Html.EditorFor(model => model.permanent_country, new { htmlAttributes = new { @class = "form-control" } })*@
+                                                    @Html.ValidationMessageFor(model => model.permanent_country, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+
+
+                                            <div class="form-group">
+                                                @Html.LabelFor(model => model.permanent_zip_code, htmlAttributes: new { @class = "control-label " })
+                                                <div>
+                                                    @Html.EditorFor(model => model.permanent_zip_code, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.permanent_zip_code, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="button" class="btn btn-primary" data-toggle="tab" value="Previous" onclick="Next('tab_4','tab_3', 'tab_bank');" aria-expanded="true">
+                                                <input type="button" class="btn btn-primary" data-toggle="tab" value="Next" onclick="Next('tab_4','tab_5', 'tab_attachment');" aria-expanded="true">
+                                            </div>
+                                            </div>
+                                        </div>
+                                    <div id="tab_5" class="tab-pane">
+                                        <div class="col-md-7">
+                                            <div class="form-group">
+                                                @Html.LabelFor(model => model.allergic, htmlAttributes: new { @class = "control-label" })
+
+                                                @Html.EditorFor(model => model.allergic, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.allergic, "", new { @class = "text-danger" })
+                                            </div>
+                                            <div class="form-group">
+                                                @Html.LabelFor(model => model.blood_group, htmlAttributes: new { @class = "control-label" })
+
+                                                @Html.EditorFor(model => model.blood_group, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.blood_group, "", new { @class = "text-danger" })
+
+                                            </div>
+
+                                            <div class="form-group">
+                                                <input type="button" class="btn btn-primary" data-toggle="tab" value="Previous" onclick="Next('tab_5', 'tab_4', 'tab_contact');" aria-expanded="true">
+                                                <input type="button" class="btn btn-primary" data-toggle="tab" value="Next" onclick="Next('tab_5','tab_6', 'tab_attachment');" aria-expanded="true">
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                    <div id="tab_6" class="tab-pane">
+                                        <div class="col-md-7">
+                                            <table class="table table-bordered">
+
+                                                <tr>
+                                                    <td>@Html.DisplayNameFor(model => model.addressproof_path)</td>
+                                                    <td class="text-bold">@Html.DisplayFor(model => model.addressproof_path)</td>
+                                                    <td>@Html.DisplayNameFor(model => model.cv_path)</td>
+                                                    <td class="text-bold">@Html.DisplayFor(model => model.cv_path)</td>
+                                                </tr>
+                                            </table>
+                                            <div class="form-group">
+                                                <label for="addressproof" class="control-label">PAN / AADHAAR CARD</label>
+                                                <input type="file" name="addressproof" id="addressproof" class="form-control" />
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="profile" class="control-label">RESUME</label>
+                                                <input type="file" name="profile" id="profile" class="form-control" />
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="button" class="btn btn-primary" data-toggle="tab" value="Previous" onclick="Next('tab_6', 'tab_5', 'tab_misc');" aria-expanded="true">
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-md-10">
+                                                    <input type="submit" value="Save" class="btn btn-primary" />
+                                                    <a href="../Index" class="btn btn-info">Back to List</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                     
+                            </div>
+                        </div>
+                        
+                    
+                </div>
+                    </div>
+                </div>
+            </div>
+    <div class="modal modal-danger" role="dialog" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Error Occured</h4>
+                </div>
+                <div class="modal-body">
+                    <div id="msgbody"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+    </section>
+}
+
+
+<script language="javascript" type="text/javascript">
+    function Validatetab1() {
+        var res = '';
+
+        if ($("#first_name").val() == '') {
+            res = res + "Please Enter First Name <br/>";
+        }
+        if ($("#last_name").val() == '') {
+            res = res + "Please Enter Last Name <br/>";
+        }
+        if ($("#DOB").val() == '') {
+            res = res + "Please Enter Date of Birth <br/>";
+        }
+        //if ($("#Email").val() == '') {
+        //    res = res + "Please Enter Email <br/>";
+        //}
+        if ($("#gender").val() == '') {
+            res = res + "Please Select Gender <br/>";
+        }
+        if (res != '') {
+            $('#msgbody').html(res);
+            $('#myModal').modal('show');
+        }
+        else {
+            $('#tab_work a[href="#tab_2"]').tab('show');
+        }
+    }
+
+
+    function validatetab2(tabname, tabid) {
+        var res = '';
+
+        if ($("#employee_number").val() == '') {
+            res = res + "Please Enter Employee Number <br/>";
+        }
+        if ($("#designation").val() == '') {
+            res = res + "Please Enter Designation <br/>";
+        }
+        if ($("#WorkStartDate").val() == '') {
+            res = res + "Please Enter Date of Joining <br/>";
+        }
+        if ($("#PassingYear").val() == '') {
+            res = res + "Please Enter Year of Passing <br/>";
+        }
+        if ($("#University").val() == '') {
+            res = res + "Please Enter University <br/>";
+        }
+        if (res != '') {
+            $('#msgbody').html(res);
+            $('#myModal').modal('show');
+        }
+        else {
+            $('#msgbody').html("");
+            console.log($(tabid + ' a[href="' + tabname + '"]'));
+            $('#tab_work a[href="#tab_2"]').tab('show');
+            $(tabid + ' a[href="' + tabname + '"]').tab('show');
+        }
+
+
+
+    }
+    function validatetab3(tabname, tabid) {
+        var res = '';
+
+        if ($("#BankAccountNo").val() == '') {
+            res = res + "Please Enter Bank Account Number <br/>";
+        }
+        if ($("#BankName").val() == '') {
+            res = res + "Please Enter Bank Name <br/>";
+        }
+        if ($("#ESIPFNumber").val() == '') {
+            res = res + "Please Enter PF or ESI Number<br/>";
+        }
+        if ($("#PanNumber").val() == '') {
+            res = res + "Please Enter PAN Number <br/>";
+        }
+        if ($("#AdharNumber").val() == '') {
+            res = res + "Please Enter Aadhaar Card Number <br/>";
+        }
+        if (res != '') {
+            $('#msgbody').html(res);
+            $('#myModal').modal('show');
+        }
+        else {
+            $('#msgbody').html("");
+            $(tabid + ' a[href="' + tabname + '"]').tab('show');
+        }
+    }
+
+    function validatetab4(tabname, tabid) {
+        var res = '';
+
+        if ($("#present_address").val() == '') {
+            res = res + "Please Enter Present Address <br/>";
+        }
+        if ($("#present_city").val() == '') {
+            res = res + "Please Enter City Name <br/>";
+        }
+        if ($("#present_state").val() == '') {
+            res = res + "Please select State<br/>";
+        }
+        if ($("#present_country").val() == '') {
+            res = res + "Please select Country<br/>";
+        }
+        if ($("#present_zip_code").val() == '') {
+            res = res + "Please Enter Zip code. <br/>";
+        }
+
+        if ($("#permanent_address").val() == '') {
+            res = res + "Please Enter Permanent Address <br/>";
+        }
+        if ($("#permanent_city").val() == '') {
+            res = res + "Please Enter City Name <br/>";
+        }
+        if ($("#permanent_state").val() == '') {
+            res = res + "Please select State<br/>";
+        }
+        if ($("#permanent_country").val() == '') {
+            res = res + "Please select Country<br/>";
+        }
+        if ($("#permanent_zip_code").val() == '') {
+            res = res + "Please Enter Zip code. <br/>";
+        }
+
+        if (res != '') {
+            $('#msgbody').html(res);
+            $('#myModal').modal('show');
+        }
+        else {
+            $('#msgbody').html("");
+            console.log(tabname + 'a[href="' + tabid + '"]');
+
+            $(tabid + ' a[href="' + tabname + '"]').tab('show');
+        }
+    }
+
+    function validatetab5(tabname, tabid) {
+        $(tabid + ' a[href="' + tabname + '"]').tab('show');
+    }
+    function validatetab6(tabname, tabid) {
+        $(tabid + ' a[href="' + tabname + '"]').tab('show');
+    }
+    function btnOutside() {
+        Validatetab1();
+    };
+
+
+    function Next(tab, tabname, tabid) {
+        // alert(tab);
+        var xtabname = "#" + tabname;
+        var divID = '#' + tabid;
+
+        switch (tab) {
+            case "tab_1":
+                Validatetab1();
+            case "tab_2":
+                validatetab2(xtabname, divID);
+                break;
+            case "tab_3":
+                validatetab3(xtabname, divID);
+                break;
+            case "tab_4":
+                validatetab4(xtabname, divID);
+                break;
+            case "tab_5":
+                validatetab5(xtabname, divID);
+                break;
+            case "tab_6":
+                validatetab6(xtabname, divID);
+                break;
+        }
+    }
+    $("#DOB").datepicker({
+        dateFormat: 'dd-mm-yy',
+        maxDate: 0
+    });
+    $("#WorkStartDate").datepicker({
+        dateFormat: 'dd-mm-yy',
+        maxDate: 0
+    });
+    $("#WorkEndDate").datepicker({
+        dateFormat: 'dd-mm-yy',
+        minDate: 0
+    });
+    $("#PassingYear").datepicker({
+        dateFormat: 'dd-mm-yy',
+        maxDate: 0
+    })
+    $("#chkCopyPresentAddr").change(function () {
+        if ($("#chkCopyPresentAddr:checked").val() == "true") {
+            $("#permanent_address").val($("#present_address").val());
+            $("#permanent_city").val($("#present_city").val());
+            $("#permanent_state").val($("#present_state").val());
+            $("#permanent_country").val($("#present_country").val());
+            $("#permanent_zip_code").val($("#present_zip_code").val());
+        } else {
+            $("#permanent_address").val("");
+            $("#permanent_city").val("");
+            $("#permanent_state").val("");
+            $("#permanent_country").val("");
+            $("#permanent_zip_code").val("");
+        }
+    });
+</script>
+

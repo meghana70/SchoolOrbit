@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolOrbit", "SchoolOrbit\SchoolOrbit.csproj", "{96E5716F-45E7-4604-A41B-6545C7BDE8C0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomainModel", "DomainModel\DomainModel.csproj", "{461C2EED-1ACD-4D9E-AD94-1E7C3C8DC395}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{96E5716F-45E7-4604-A41B-6545C7BDE8C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96E5716F-45E7-4604-A41B-6545C7BDE8C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96E5716F-45E7-4604-A41B-6545C7BDE8C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96E5716F-45E7-4604-A41B-6545C7BDE8C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{461C2EED-1ACD-4D9E-AD94-1E7C3C8DC395}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{461C2EED-1ACD-4D9E-AD94-1E7C3C8DC395}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{461C2EED-1ACD-4D9E-AD94-1E7C3C8DC395}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{461C2EED-1ACD-4D9E-AD94-1E7C3C8DC395}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

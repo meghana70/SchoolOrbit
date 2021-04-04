@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="51891916506349d5b43ee2254956392b" Name="Diagram1" ZoomLevel="100">
+        <EntityTypeShape EntityType="SOModel.AspNetRole" Width="1.5" PointX="0.75" PointY="2.5" />
+        <EntityTypeShape EntityType="SOModel.AspNetUserClaim" Width="1.5" PointX="5.25" PointY="3.625" />
+        <EntityTypeShape EntityType="SOModel.AspNetUserLogin" Width="1.5" PointX="5.25" PointY="1" />
+        <EntityTypeShape EntityType="SOModel.AspNetUser" Width="1.5" PointX="3" PointY="1.125" />
+        <EntityTypeShape EntityType="SOModel.sch_department" Width="1.5" PointX="5.25" PointY="55.375" />
+        <EntityTypeShape EntityType="SOModel.sch_employee" Width="1.5" PointX="10.5" PointY="36.875" />
+        <EntityTypeShape EntityType="SOModel.sch_employee_docs" Width="1.5" PointX="8.25" PointY="27.25" />
+        <EntityTypeShape EntityType="SOModel.sch_expense_attachment" Width="1.5" PointX="0.75" PointY="6.75" />
+        <EntityTypeShape EntityType="SOModel.sch_expense_trans" Width="1.5" PointX="7.5" PointY="34.625" />
+        <EntityTypeShape EntityType="SOModel.sch_expense_type" Width="1.5" PointX="5.25" PointY="49" />
+        <EntityTypeShape EntityType="SOModel.sch_fee_discount" Width="1.5" PointX="8.25" PointY="30.375" />
+        <EntityTypeShape EntityType="SOModel.sch_fee_payment_plan" Width="1.5" PointX="8.25" PointY="15.625" />
+        <EntityTypeShape EntityType="SOModel.sch_fee_term" Width="1.5" PointX="5.75" PointY="6.75" />
+        <EntityTypeShape EntityType="SOModel.sch_fee_type" Width="1.5" PointX="5.25" PointY="52.625" />
+        <EntityTypeShape EntityType="SOModel.sch_mynotification" Width="1.5" PointX="7.75" PointY="0.75" />
+        <EntityTypeShape EntityType="SOModel.sch_notification" Width="1.5" PointX="5.25" PointY="21.75" />
+        <EntityTypeShape EntityType="SOModel.sch_parent" Width="1.5" PointX="6" PointY="10.625" />
+        <EntityTypeShape EntityType="SOModel.sch_program_batch" Width="1.5" PointX="5.25" PointY="28.75" />
+        <EntityTypeShape EntityType="SOModel.sch_program_batch_fee" Width="1.5" PointX="7.5" PointY="40.5" />
+        <EntityTypeShape EntityType="SOModel.sch_program_batch_student" Width="1.5" PointX="10.5" PointY="23.375" />
+        <EntityTypeShape EntityType="SOModel.sch_program_section" Width="1.5" PointX="5.25" PointY="17.875" />
+        <EntityTypeShape EntityType="SOModel.sch_sms_notification" Width="1.5" PointX="8.25" PointY="23" />
+        <EntityTypeShape EntityType="SOModel.sch_sms_service" Width="1.5" PointX="7.75" PointY="3.75" />
+        <EntityTypeShape EntityType="SOModel.sch_student" Width="1.5" PointX="8.25" PointY="18.625" />
+        <EntityTypeShape EntityType="SOModel.sch_teacher" Width="1.5" PointX="5.25" PointY="26.25" />
+        <EntityTypeShape EntityType="SOModel.sch_user_roles" Width="1.5" PointX="8.75" PointY="8.75" />
+        <EntityTypeShape EntityType="SOModel.sys_academic_year" Width="1.5" PointX="5.25" PointY="41" />
+        <EntityTypeShape EntityType="SOModel.sys_business" Width="1.5" PointX="0.75" PointY="23.375" />
+        <EntityTypeShape EntityType="SOModel.sys_country" Width="1.5" PointX="9.75" PointY="0.75" />
+        <EntityTypeShape EntityType="SOModel.sys_program" Width="1.5" PointX="3" PointY="16.875" />
+        <EntityTypeShape EntityType="SOModel.sys_program_model" Width="1.5" PointX="0.75" PointY="18.75" />
+        <EntityTypeShape EntityType="SOModel.sys_program_type" Width="1.5" PointX="0.75" PointY="16.25" />
+        <EntityTypeShape EntityType="SOModel.sys_roles" Width="1.5" PointX="9.75" PointY="3.75" />
+        <EntityTypeShape EntityType="SOModel.sys_school" Width="1.5" PointX="3" PointY="22.125" />
+        <EntityTypeShape EntityType="SOModel.sys_states" Width="1.5" PointX="0.75" PointY="10.75" />
+        <EntityTypeShape EntityType="SOModel.sys_user" Width="1.5" PointX="3.75" PointY="8.625" />
+        <AssociationConnector Association="SOModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="SOModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="SOModel.FK_sch_department_sys_school" />
+        <AssociationConnector Association="SOModel.FK_sch_employee_sch_department" />
+        <AssociationConnector Association="SOModel.FK_sch_employee_sys_school" />
+        <AssociationConnector Association="SOModel.FK_sch_employee_sys_user" />
+        <AssociationConnector Association="SOModel.FK_sch_employee_docs_sys_school" />
+        <AssociationConnector Association="SOModel.FK_sch_employee_docs_sys_user" />
+        <AssociationConnector Association="SOModel.FK_sch_expense_trans_sch_expense_type" />
+        <AssociationConnector Association="SOModel.FK_sch_expense_trans_sys_school" />
+        <AssociationConnector Association="SOModel.FK_sch_expense_type_sys_school" />
+        <AssociationConnector Association="SOModel.FK_sch_program_batch_student_sch_fee_discount" />
+        <AssociationConnector Association="SOModel.FK_sch_program_batch_student_sch_fee_term" />
+        <AssociationConnector Association="SOModel.FK_sch_fee_type_sys_school" />
+        <AssociationConnector Association="SOModel.FK_sch_program_batch_fee_sch_fee_type" />
+        <AssociationConnector Association="SOModel.FK_sch_notification_sys_school" />
+        <AssociationConnector Association="SOModel.FK_sch_notification_sys_user" />
+        <AssociationConnector Association="SOModel.FK_sch_parent_sys_user" />
+        <AssociationConnector Association="SOModel.FK_sch_student_sch_parent" />
+        <AssociationConnector Association="SOModel.FK_sch_program_batch_fee_sch_program_batch" />
+        <AssociationConnector Association="SOModel.FK_sch_program_batch_student_sch_program_batch" />
+        <AssociationConnector Association="SOModel.FK_sch_program_batch_sys_program" />
+        <AssociationConnector Association="SOModel.FK_sch_program_batch_sys_school" />
+        <AssociationConnector Association="SOModel.FK_sch_program_batch_fee_sys_academic_year" />
+        <AssociationConnector Association="SOModel.FK_sch_program_batch_student_sch_program_section" />
+        <AssociationConnector Association="SOModel.FK_sch_program_batch_student_sys_user" />
+        <AssociationConnector Association="SOModel.FK_sch_program_section_sys_program" />
+        <AssociationConnector Association="SOModel.FK_sch_program_section_sys_school" />
+        <AssociationConnector Association="SOModel.FK_sch_sms_notification_sys_school" />
+        <AssociationConnector Association="SOModel.FK_sch_sms_notification_sys_user" />
+        <AssociationConnector Association="SOModel.FK_sch_student_sys_school" />
+        <AssociationConnector Association="SOModel.FK_sch_student_sys_user" />
+        <AssociationConnector Association="SOModel.FK_sch_teacher_sys_school" />
+        <AssociationConnector Association="SOModel.FK_sys_school_sys_business" />
+        <AssociationConnector Association="SOModel.FK_sys_program_sys_program_model" />
+        <AssociationConnector Association="SOModel.FK_sys_program_sys_program_type" />
+        <AssociationConnector Association="SOModel.FK_sys_program_sys_program_type1" />
+        <AssociationConnector Association="SOModel.AspNetUserRoles" />
+        <EntityTypeShape EntityType="SOModel.sch_fee_schedule" Width="1.5" PointX="11.375" PointY="9.75" />
+        <EntityTypeShape EntityType="SOModel.vew_user_roles" Width="1.5" PointX="12.375" PointY="0.75" />
+        <EntityTypeShape EntityType="SOModel.vew_user_security_roles" Width="1.5" PointX="12.375" PointY="4.75" />
+        <EntityTypeShape EntityType="SOModel.vewNotification" Width="1.5" PointX="11.375" PointY="11.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

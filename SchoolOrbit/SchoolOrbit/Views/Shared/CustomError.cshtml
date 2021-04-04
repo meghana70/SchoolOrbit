@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - School Orbit</title>
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">   
+    <style>
+        a{
+            color:rgba(76, 174, 76, 1) !important;
+        }
+        .title-404 {
+            font-size: 45px;
+            line-height: 120%;
+            max-width: 90%;
+            margin: 0 auto 5px;
+            color:#fefefe;
+        }
+
+            p {
+                margin: 0 auto 22px;
+                color:#fefefe;
+                    font-size: 24px;
+            }
+
+        .error-content {
+            margin: 0 auto;
+            max-width: 64%;
+        }
+
+        .error-wrapper {
+            background-color: #2A668E;
+        }
+
+        .Notfoundlogo {
+            max-width: 90%;
+            margin-bottom: 60px;
+        }
+        .error-bg-arrow{
+            background-image: url('/pictures/bg-arrow-white.png');
+            height:107px;
+            width:4%;           
+            background-repeat:no-repeat;
+        }
+    </style>
+</head>
+<body class="error-wrapper">
+    
+       
+        <div >
+            <!-- Content Header (Page header) -->
+            <!-- Left col -->
+            @RenderBody()
+        </div>
+    
+</body>
+
+</html>

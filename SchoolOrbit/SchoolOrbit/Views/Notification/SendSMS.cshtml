@@ -1,0 +1,91 @@
+﻿@model DomainModel.BusinessLayer.LogSMS
+
+@{
+    ViewBag.Title = "SendSMS";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@Styles.Render("~/Content/TagInput")
+<section class="content-header">
+    <h1>
+        Send SMS
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">SMS</li>
+    </ol>
+</section>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <section class="content">
+
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <ol class="breadcrumb">
+                    <li><a href="#">Balance : 45000</a> </li>                  
+                    <li><a href="#">Total : 100000</a></li>
+                    
+                   </ol>
+</div><!-- /.box-header -->
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="box-body">
+
+                        <div>
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                             <div class="form-group">
+                                @Html.LabelFor(model => model.To, htmlAttributes: new { @class = "control-label" })
+                              
+                                    @Html.EditorFor(model => model.To, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.To, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Body, htmlAttributes: new { @class = "control-label" })
+                              
+                                @Html.TextAreaFor(model => model.Body,4,63, new { htmlAttributes = new { @class = "" } })
+                                  @Html.ValidationMessageFor(model => model.Body, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">                               
+                                    <button type="submit" class="btn btn-primary"><i class="fa fa-mobile fa-lg"></i> Send SMS</button>
+                                    <a href="/home/Index" class="btn btn-danger"><i class="fa fa-times"></i> Discard</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            
+    </section><!-- /.content -->
+
+
+}
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/maxlength")
+    @Scripts.Render("~/bundles/TagInput")
+
+}
+<script >
+
+    $(document).ready(function () {
+        $("#To").tokenInput("@Url.Action("GetSample")", {
+            theme: "facebook", preventDuplicates: true,
+            onAdd: function (item) {
+                alert("Added " + item.id);
+            },
+            onDelete: function (item) {
+                alert("Deleted " + item.id);
+            }
+        });
+        $("#Body").maxlength({ max: 160 });
+        $("#Body").addClass("form-control");
+    });
+    
+</script>

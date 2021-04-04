@@ -1,0 +1,187 @@
+﻿@model SchoolOrbit.Models.ExpenseTrans
+
+@{
+    ViewBag.Title = "EditExpenditure";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="content-header">
+    <h1>
+        Expenditure
+        <small></small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-star"></i>Edit</a></li>
+        <li class="active">Expenditure</li>
+    </ol>
+</section>
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data", id = "exp-upload-form" }))
+{
+    @Html.AntiForgeryToken()
+    <section class="content">
+        <div class="box">
+            <div class="box-header with-border">
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            @Html.HiddenFor(model => model.id)
+                            <table class="table table-bordered table-striped">
+
+                                <tr>
+                                    <td>
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.expense_type_id, htmlAttributes: new { @class = "control-label col-md-2" })
+                                            <div class="col-md-10">
+
+                                                @Html.DropDownListFor(model => model.expense_type_id, (IEnumerable<SelectListItem>)ViewBag.ExpenseCategory, "", new { @class = "form-control" })
+                                             
+                                                @Html.ValidationMessageFor(model => model.expense_type_id, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.expense_date, htmlAttributes: new { @class = "control-label col-md-2" })
+                                            <div class="col-md-10">
+                                                @Html.EditorFor(model => model.expense_date, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.expense_date, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.mode_of_payment, htmlAttributes: new { @class = "control-label col-md-2" })
+                                            <div class="col-md-10">
+                                                @Html.DropDownListFor(model => model.mode_of_payment, (IEnumerable<SelectListItem>)ViewBag.ModeofPayment, "", new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.mode_of_payment, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                @if (Model.mode_of_payment != "Cash") { 
+                                <tr>
+                                    <td>
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.cheque_dd_no, htmlAttributes: new { @class = "control-label col-md-2" })
+                                            <div class="col-md-10">
+                                                @Html.EditorFor(model => model.cheque_dd_no, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.cheque_dd_no, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.issue_bank, htmlAttributes: new { @class = "control-label col-md-2" })
+                                            <div class="col-md-10">
+                                                @Html.EditorFor(model => model.issue_bank, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.issue_bank, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+
+                                    </td>
+                                </tr>
+                                }
+                                <tr>
+                                    <td>
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.amount, htmlAttributes: new { @class = "control-label col-md-2" })
+                                            <div class="col-md-10">
+                                                @Html.EditorFor(model => model.amount, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.amount, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.remarks, htmlAttributes: new { @class = "control-label col-md-2" })
+                                            <div class="col-md-10">
+                                                @Html.EditorFor(model => model.remarks, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.remarks, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <div class="form-group">
+                                           
+                                            <div class="col-md-10">
+                                                <label for="vocher">Attachments:</label>
+                                                @if (ViewBag.attachment != null)
+                                                {
+                                                    String strAtt = ViewBag.attachment;
+                                                    String[] arrAtt = strAtt.Split(',');
+
+                                                    <table class="table table-bordered">
+                                                        <tr>
+                                                            <td class="text-bold">@arrAtt[0]</td>
+                                                            <td class="text-bold">@arrAtt[1]</td>
+                                                        </tr>
+                                                    </table>
+                                                }
+                                                <input type="file" name="vocher" id="vocher" accept=".pdf,image/*" />
+                                                <input type="file" name="vocher2" id="vocher2" accept=".pdf,image/*" />
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+
+
+
+                                <tr>
+
+                                    <td>
+                                        <div class="form-group">
+                                            <div class="col-md-offset-2 col-md-10">
+                                                <input type="submit" value="Save" class="btn btn-primary" />
+                                                <a href="../Expenditure" class="btn btn-info"> Back</a>
+                                            </div>
+                                        </div>
+
+                                    </td>
+                                </tr>
+
+                            </table>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+
+<script language="javascript" type="text/javascript">
+        $("#expense_date").datepicker({
+            dateFormat: "dd-mm-yy",
+            maxDate:0
+        });
+        $("#mode_of_payment").change(function () {
+            if ($("#mode_of_payment").val() == "Cash") {
+                $("#cheque_dd_no").prop("disabled", true);
+                $("#issue_bank").prop("disabled", true);
+            } else {
+                $("#cheque_dd_no").prop("disabled", false);
+                $("#issue_bank").prop("disabled", false);
+            }
+        });
+</script>
+
+

@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewBag.Title = "UnAuthorized";
+    Layout = "~/Views/Shared/CustomError.cshtml";
+}
+
+<div style=" padding:20px;margin:20px">
+
+    <div class="error-content">
+        <center>
+            <img src="~/pictures/unauthorized.png" class="Notfoundlogo" alt="logo" />
+            <h2 class="rs title-404">You are not Authorized to view this page.</h2>
+            <p>
+                Please try again or contact <a href="http://www/lifino.com">Administrator</a>.  
+
+            </p>
+            <div class="error-bg-arrow"></div>
+            <br />
+            <a href="/Account/Login" class="btn btn-default">Login</a>
+        </center>
+    </div>
+</div>
+

@@ -1,0 +1,120 @@
+﻿@model DomainModel.BusinessLayer.msgNotification
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<section class="content-header">
+    <h1>
+        Mailbox
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-inbox"></i> Mailbox</a></li>
+        <li class="active">View</li>
+    </ol>
+</section>
+@Html.HiddenFor(model => model.id)
+@Html.Hidden("ioBoxId", (int)(ViewBag.ioBoxId))
+
+
+<section class="content">
+
+    <div class="box box-primary">
+        <div class="box-header with-border">
+        </div><!-- /.box-header -->
+        <div class="row">
+            <div class="col-md-6">
+                <div class="box-body">
+                    <table class=" table">
+                        <tr>
+                            <td>
+                                <div class="form-group">
+                                    @Html.DisplayNameFor(model => model.sentByName) : @Html.DisplayFor(model => model.sentByName)
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="form-group">
+                                    @{
+                                        string strToList = "";
+                                        if (Model.ToList != null && Model.ToList != "")
+                                        {
+                                            strToList = Model.ToList.Substring(0, Model.ToList.Length - 1);
+                                        }
+                                    }
+                                    @Html.DisplayNameFor(model => model.To) : @Html.Raw(strToList)
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="form-group">
+                                    @Html.DisplayNameFor(model => model.subject) : @Html.DisplayFor(model => model.subject)
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="form-group">
+                                    @Html.Raw(Model.Body)
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+
+                   
+               
+               
+                </div>
+                        <div class="box-footer no-padding">
+                            <div class="mailbox-controls">
+                                <div class="btn-group">
+                                    <button class="btn btn-default btn-sm" id="btnDelete"><i class="fa fa-trash-o"></i></button>
+                                    @*<button class="btn btn-default btn-sm" id="btnReply"><i class="fa fa-reply"></i></button>
+                                    <button class="btn btn-default btn-sm"><i class="fa fa-share"></i></button>*@
+                                </div><!-- /.btn-group -->
+                            </div>
+                        </div>
+                        <div class="box-footer">
+                            @if (ViewBag.ioBoxId == 1)
+                            {
+                                <a href="/Notification/Inbox" class="btn btn-primary">Back to List</a>
+                            }
+                            else
+                            {
+                                <a href="/Notification/Outbox" class="btn btn-primary">Back to List</a>
+                            }
+
+                      </div>
+                </div>
+
+        </div>
+        </div>
+    </section>
+                        <script language="javascript" type="text/javascript">
+                            $(function () {
+                                $("#btnDelete").click(function () {
+                                    var strIds = $("#id").val();
+                                    var ioboxid = $("#ioBoxId").val();
+                                    if (strIds != "") {
+                                        $.get("@Url.Action("DeleteMsg")",
+                                        {
+                                            strIds: strIds,
+                                            ioBox: ioboxid
+                                        }, function (msg) {
+                                            if (msg == "1") {
+                                                window.location.href = "/Notification/Inbox";
+                                            } else if (msg == "2") {
+                                                window.location.href = "/Notification/Outbox";
+                                            }
+                                        }
+                                        );
+                                    }
+                                });
+                                $("#btnReply").click(function () {
+                                    window.location.href = "/Notification/ReplyMsg/" + $("#id").val();
+                                });
+
+                            });
+                        </script>

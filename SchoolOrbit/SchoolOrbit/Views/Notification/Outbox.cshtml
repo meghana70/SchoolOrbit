@@ -1,0 +1,142 @@
+﻿@model IEnumerable<DomainModel.BusinessLayer.msgNotification>
+
+@{
+    ViewBag.Title = "Outbox";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="content-header">
+    <h1>
+        Outbox
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Outbox</li>
+    </ol>
+</section>
+
+
+<section class="content">
+    <div class="row">
+
+        <div class="col-md-12">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <a href="~/Notification/Compose" class="btn btn-default btn-sm"><i class="fa fa-plus"></i> Compose</a>
+                </div><!-- /.box-header -->
+                <div class="table-responsive mailbox-messages">
+                    <table class="table table-bordered table-striped" id="msg">
+                        <thead>
+                            <tr>
+                                <th>
+                                    <button class="btn btn-default btn-sm checkbox-toggle"><i class="fa fa-square-o"></i></button>
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.To)
+                                </th>
+
+                                <th>
+                                    @Html.DisplayNameFor(model => model.subject)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.ts_entered)
+                                </th>                                
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" cval="@item.id" />
+                                    </td>
+                                    <td> 
+                                        @if (item.ToList != null && item.ToList != "")
+                                        {
+                                            @Html.ActionLink(item.ToList.Substring(0, item.ToList.Length - 1), "Details", new { id = item.id, iobox = 2 })
+                                        }                                                                             
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink(item.subject, "Details", new { id = item.id, iobox = 2 })
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.ts_entered)
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+
+                    <div class="box-footer no-padding">
+                        <div class="mailbox-controls">
+                            <!-- Check all button -->
+                            <button class="btn btn-default btn-sm checkbox-toggle"><i class="fa fa-square-o"></i></button>
+                            <div class="btn-group">
+                                <button class="btn btn-default btn-sm" id="btnDelete"><i class="fa fa-trash-o"></i></button>                              
+                            </div><!-- /.btn-group -->                            
+                            <button class="btn btn-default btn-sm" id="btnRefresh"><i class="fa fa-refresh"></i></button>                           
+                        </div>
+                    </div>
+                </div><!-- /. box -->
+        </div><!-- /.col -->
+    </div><!-- /.row -->
+        </div>
+</section><!-- /.content -->
+<script>
+      $(function () {
+        //Enable iCheck plugin for checkboxes
+          //iCheck for checkbox and radio inputs
+
+
+
+
+        $('.mailbox-messages input[type="checkbox"]').iCheck({
+          checkboxClass: 'icheckbox_flat-blue',
+          radioClass: 'iradio_flat-blue'
+        });
+
+        //Enable check and uncheck all functionality
+        $(".checkbox-toggle").click(function () {          
+          var clicks = $(this).data('clicks');
+          if (clicks) {
+            //Uncheck all checkboxes
+            $(".mailbox-messages input[type='checkbox']").iCheck("uncheck");
+            $(".fa", this).removeClass("fa-check-square-o").addClass('fa-square-o');
+          } else {
+            //Check all checkboxes
+            $(".mailbox-messages input[type='checkbox']").iCheck("check");
+            $(".fa", this).removeClass("fa-square-o").addClass('fa-check-square-o');
+          }
+          $(this).data("clicks", !clicks);
+        });
+        $("#btnDelete").click(function () {
+            var strIds = "";
+            $(".mailbox-messages input[type='checkbox']:checked").each(function () {
+                strIds = strIds + $(this).attr("cval") + ",";
+            });            
+            if (strIds == "") {
+
+            } else {
+                $.get("@Url.Action("DeleteMsg")",
+               {
+                   strIds: strIds,
+                   ioBox: "2"
+               });
+            }
+        });
+        $("#btnRefresh").click(function () {
+            window.location.href = "/Notification/Outbox";
+        });
+      });
+      $(document).ready(function () {
+          $("#msg").DataTable({
+              "columnDefs": [
+                    { "orderable": false, "targets": 0 }
+              ]
+          });
+      });
+
+
+</script>
+
